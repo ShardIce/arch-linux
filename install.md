@@ -1,14 +1,13 @@
-# arch-linux
+# Arch-linux
 первым делом добавляем заеркало
 ls /etc/pacman.d/mirrorlist 
 нажимаем a
-# vim /etc/pacman.d/mirrorlist
+ *vim /etc/pacman.d/mirrorlist*
  
-нажимаем 
-# i
+нажимаем *i*
 
 вводим 
-# Server = https://mirror.23media.com/archlinux/$repo/os/$arch 
+*Server = https://mirror.23media.com/archlinux/$repo/os/$arch* 
 нажимаем "Esc"
 пишем :wq
 > От слов Write и Quit. (Записать и выйти)
