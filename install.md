@@ -1,9 +1,12 @@
 # Arch-linux
 первым делом добавляем заеркало \
- ls /etc/pacman.d/mirrorlist \
+```text \
+#  ls /etc/pacman.d/mirrorlist
+```
 нажимаем a \
- *vim /etc/pacman.d/mirrorlist*
- 
+```text
+# vim /etc/pacman.d/mirrorlist*
+``` 
 нажимаем 
 **i**
 
