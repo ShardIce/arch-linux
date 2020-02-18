@@ -1,4 +1,4 @@
-# Arch-linux
+# Подготовка системы для установки Arch-linux
 #### Просматриваем зеркала
 ```text
 #  ls /etc/pacman.d/mirrorlist
@@ -8,35 +8,34 @@
 # vim /etc/pacman.d/mirrorlist
 ``` 
 нажимаем "**i**"
- \
-#### вводим
-Server = https://mirror.23media.com/archlinux/$repo/os/$arch** \
+  
+вводим
+[example site]Server = https://mirror.23media.com/archlinux/$repo/os/$arch 
 нажимаем "Esc" \
-пишем :wq \
+пишем :wq 
 > От слов Write и Quit. (Записать и выйти)
- \ 
+   
 #### Разметка диска
 ```text
 # cfdisk /dev/sda 
 ```
 #### Разделы 
-> /dev/sda1 выбираем "bootable" из нижнего меню - загрузочный
-> /dev/sda2 выбираем "type" далее строка 82 Linux swap / Solatis - swap раздел
-> /dev/sda3 основной раздел куда будем ставить "system"
- \
-Далле заходим в пункт "Write" пишем "yes" и далее "Quit"
- \
+> /dev/sda1 выбираем "bootable" из нижнего меню - загрузочный  
+> /dev/sda2 выбираем "type" далее строка 82 Linux swap / Solatis - swap раздел  
+> /dev/sda3 основной раздел куда будем ставить "system"  
+Далле заходим в пункт "Write" пишем "yes" и далее "Quit"  
+    
 > можно очистить окно командой 
 ```
 # Clear
 ```
- \
+  
 #### Далeе пишем команды для нормальной работы Linux
 ```text
 # mkfs.ext4 /dev/sda1
 # mkswap /dev/sda2
-# swapon /dev/sda2**
-# mkfs.ext4 /dev/sda3**
+# swapon /dev/sda2
+# mkfs.ext4 /dev/sda3
 ```
  \
 #### Монтируем наш основной раздел в папку /mnt
@@ -57,7 +56,7 @@ Server = https://mirror.23media.com/archlinux/$repo/os/$arch** \
 ```text
 # pacstrap /mnt base linux linux-firmware
 ```
-так же можно установить сразу визуальную оболочку добавив название визуальной оболочки
+> так же можно установить сразу визуальную оболочку добавив название визуальной оболочки
 
 #### устанавливаем загрузчик (посмотреть какой загрузчик есть ещё и почему именно grub)
 ```text
@@ -98,9 +97,9 @@ Server = https://mirror.23media.com/archlinux/$repo/os/$arch** \
 ```text
 # passwd shardice
 ```
->new pass: 0000
->Retype pass: 0000
-> 0000 - ваш пароль \
+new pass: ******
+Retype pass: ******
+>****** - ваш пароль \
 
 устанавливаем загрузчик на hdd
 ```text
