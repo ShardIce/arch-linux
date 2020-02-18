@@ -9,8 +9,8 @@
 ``` 
 нажимаем "**i**"
   
-вводим
-[example site]Server = https://mirror.23media.com/archlinux/$repo/os/$arch  
+вводим  
+```Server = https://mirror.23media.com/archlinux/$repo/os/$arch```  
 нажимаем "Esc"  
 пишем :wq  
 > От слов Write и Quit. (Записать и выйти)
