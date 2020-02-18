@@ -64,7 +64,7 @@ _Далле заходим в пункт "**Write**" пишем "**yes**" и д�
 # mount /dev/sda1 /mnt/boot
 ```
   \
-  \
+  
 # Установка системы Arch Linux
 ```text
 # pacstrap /mnt base linux linux-firmware
