@@ -7,8 +7,10 @@
 ```text
 # vim /etc/pacman.d/mirrorlist
 ``` 
-нажимаем "**i**"
-  
+нажимаем  
+```text
+i
+```  
 вводим  
 ```text
 Server = https://mirror.23media.com/archlinux/$repo/os/$arch
