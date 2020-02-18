@@ -1,15 +1,15 @@
 # Arch-linux
-#### добавляем заеркало \
-```text \
+#### добавляем заеркало
+```text
 #  ls /etc/pacman.d/mirrorlist
 ```
-нажимаем a \
+нажимаем a
 ```text
 # vim /etc/pacman.d/mirrorlist*
 ``` 
 нажимаем "**i**"
  \
-#### вводим \
+#### вводим
 Server = https://mirror.23media.com/archlinux/$repo/os/$arch** \
 нажимаем "Esc" \
 пишем :wq \
