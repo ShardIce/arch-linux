@@ -10,9 +10,15 @@
 нажимаем "**i**"
   
 вводим  
-```Server = https://mirror.23media.com/archlinux/$repo/os/$arch```  
+```text
+Server = https://mirror.23media.com/archlinux/$repo/os/$arch
+```  
 нажимаем "Esc"  
-пишем :wq  
+пишем  
+```text
+:wq
+```
+нажимаем "Enter"
 > От слов Write и Quit. (Записать и выйти)
    
 #### Разметка диска
