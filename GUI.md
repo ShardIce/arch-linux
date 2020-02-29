@@ -45,3 +45,6 @@ __SDDM__ `(download: 24.17MiB, total size: 104.74 MiB)`
 ```text
 # systemctl enable lxdm.service
 ```
+
+#### Создать `users`
+см. [install.md](install.md)
