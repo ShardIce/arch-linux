@@ -29,6 +29,8 @@ Server = https://mirror.23media.com/archlinux/$repo/os/$arch
 ```text
 # cfdisk /dev/sda 
 ```
+Выбираем `dos` 
+
 #### Создаем разделы 
 - [X] /dev/sda1   
 выбираем "***bootable***" из нижнего меню - загрузочный  
