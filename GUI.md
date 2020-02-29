@@ -8,23 +8,23 @@
 Список интерфейсов можно посмотреть тут - https://wiki.archlinux.org/index.php/Desktop_environment_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)  
 Бегло рассмотрел эти  
 
-MATE
+MATE `(download: 284.78MiB, total size: 975.86 MiB)`  
 ```text
 # pacman -S mate mate-extra 
 ```
-`(download: 284.78MiB, total size: 975.86 MiB)`  
+
   
-  GNOME
+  GNOME `(download: 257.45MiB, total size: 1365.03 MiB, New Upgrade Size: 1357.87 MiB)`
 ```text
 # pacman -S gnome  
 ```
-`(download: 257.45MiB, total size: 1365.03 MiB, New Upgrade Size: 1357.87 MiB)`  
   
-  XFCE4
+  
+  XFCE4 `(download: 7.71MiB, total size: 44.89 MiB) - шустрая и прикольная, но требует дополнительных установок`
 ```text
 # pacman -S xfce4 
 ```
-`(download: 7.71MiB, total size: 44.89 MiB) - шустрая и прикольная, но требует дополнительных установок`
+
 
 я выбрал __МАТЕ__ для последующего изучения, ибо там для начала есть всё необходимое.
 
