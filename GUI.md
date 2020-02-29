@@ -1,5 +1,5 @@
 # Подготовка к установки GUI на Arch-linux
-#### Установки xorg-server
+#### Установки xorg-server `(download: 32.34MiB, total size: 56.06 MiB)`
 ```text
 #  pacman -S xorg xorg-server
 ```
