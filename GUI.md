@@ -28,7 +28,7 @@ __LXDM__ `(download: 11.73MiB, total size: 69.04 MiB)`
 ```text
 # pacman -S lxdm 
 ``` 
-или
+или  
 __SDDM__ `(download: 24.17MiB, total size: 104.74 MiB)`
 ```text
 # pacman -S sddm
