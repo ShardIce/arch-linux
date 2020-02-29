@@ -47,4 +47,4 @@ __SDDM__ `(download: 24.17MiB, total size: 104.74 MiB)`
 ```
 
 #### Создать `users`
-см. [install.md](install.md)
+см. [install.md#заводим-пользователя](install.md)
