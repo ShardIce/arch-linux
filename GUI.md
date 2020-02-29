@@ -5,19 +5,22 @@
 ```
 
 # Установка GUI на Arch-linux
-Список интерфейсов можно посмотреть тут - `https://wiki.archlinux.org/index.php/Desktop_environment_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)`
-Бегло рассмотрел эти 
+Список интерфейсов можно посмотреть тут - https://wiki.archlinux.org/index.php/Desktop_environment_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)  
+Бегло рассмотрел эти  
+
 MATE
 ```text
 # pacman -S mate mate-extra 
 ```
-`(download: 284.78MiB, total size: 975.86 MiB)`
-GNOME
+`(download: 284.78MiB, total size: 975.86 MiB)`  
+  
+  GNOME
 ```text
 # pacman -S gnome  
 ```
-`(download: 257.45MiB, total size: 1365.03 MiB, New Upgrade Size: 1357.87 MiB)`
-XFCE4
+`(download: 257.45MiB, total size: 1365.03 MiB, New Upgrade Size: 1357.87 MiB)`  
+  
+  XFCE4
 ```text
 # pacman -S xfce4 
 ```
