@@ -1,10 +1,10 @@
-# Подготовка к установки графичиского интерфейсф на Arch-linux
+# Подготовка к установки GUI на Arch-linux
 #### Установки xorg-server
 ```text
 #  pacman -S xorg xorg-server
 ```
 
-# Установка графичиского интерфейса на Arch-linux
+# Установка GUI на Arch-linux
 Список интерфейсов можно посмотреть тут - `https://wiki.archlinux.org/index.php/Desktop_environment_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)`
 Бегло рассмотрел эти 
 MATE
