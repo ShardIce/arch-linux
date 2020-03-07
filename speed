@@ -1,7 +1,6 @@
 #Ускоряем загрузку
 ####отключаем загрузку GRUB
-
+#### Просматриваем зеркала
 ```text
-# sudo nano /boot/grub/grub.cfg
+#  sudo nano /boot/grub/grub.cfg
 ```
- 
