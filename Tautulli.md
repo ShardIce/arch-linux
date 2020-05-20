@@ -128,7 +128,7 @@
 |{session_id}|The unique identifier for the stream.|Уникальный идентификатор потока.|
 |{user_id}|The unique identifier for the user.|Уникальный идентификатор для пользователя.|
 |{machine_id}|The unique identifier for the player.|Уникальный идентификатор игрока.|
-**Source Metadata Details**
+## Source Metadata Details
 | Команда | En | Ru |
 |----------------|---------|----------------|
 |{media_type}|The type of media. (movie, show, season, episode, artist, album, track, clip)|Тип носителя. (фильм, шоу, сезон, эпизод, исполнитель, альбом, трек, клип)|
@@ -241,7 +241,7 @@
 |{poster_thumb}|The Plex thumbnail for the poster image.|Миниатюра Plex для изображения постера.|
 |{poster_title}|The title for the poster image.|Название для изображения плаката.|
 |{indexes}|If the media has video preview thumbnails. (0 or 1)|Если на носителе есть миниатюры предварительного просмотра видео. (0 или 1)|
-**Plex Remote Access**
+## Plex Remote Access
 | Команда | En | Ru |
 |----------------|---------|----------------|
 |{remote_access_mapping_state}|The mapping state of the Plex remote access port.|Состояние отображения порта удаленного доступа Plex.|
@@ -251,7 +251,7 @@
 |{remote_access_private_address}|The Plex remote access private IP address.|Plex удаленного доступа частный IP-адрес.|
 |{remote_access_private_port}|The Plex remote access private port.|Частный порт удаленного доступа Plex.|
 |{remote_access_reason}|The failure reason for Plex remote access going down.|Причина сбоя при удаленном доступе Plex.|
-**Plex Update Available**
+## Plex Update Available
 | Команда | En | Ru |
 |----------------|---------|----------------|
 |{update_version}|The available update version for your Plex Server.|Доступная версия обновления для вашего сервера Plex.|
@@ -265,7 +265,7 @@
 |{update_extra_info}|Any extra info for the available update.|Любая дополнительная информация для доступного обновления.|
 |{update_changelog_added}|The added changelog for the available update.|Добавлен журнал изменений для доступного обновления.|
 |{update_changelog_fixed}|The fixed changelog for the available update.|Исправлен журнал изменений для доступного обновления.|
-**Tautulli Update Available**
+## Tautulli Update Available
 | Команда | En | Ru |
 |----------------|---------|----------------|
 |{tautulli_update_version}|The available update version for Tautulli.|Доступна версия обновления для Tautulli.|
