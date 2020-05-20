@@ -1,6 +1,6 @@
+**Global**
 | Команда | En | Ru |
 |----------------|---------|----------------|
-||**Global**||
 |{tautulli_version}|The current version of Tautulli.|Текущая версия Таутулли.|
 |{tautulli_remote}|The current git remote of Tautulli.|Нынешний мерзавец из Таутулли.|
 |{tautulli_branch}|The current git branch of Tautulli.|Текущий git филиал Tautulli.|
@@ -24,8 +24,10 @@
 |{datestamp}|The date (in date format) when the notification is triggered.|Дата (в формате даты), когда срабатывает уведомление.|
 |{timestamp}|The time (in time format) when the notification is triggered.|Время (в формате времени), когда срабатывает уведомление.|
 |{unixtime}|The unix timestamp when the notification is triggered.|Временная метка Unix при запуске уведомления.|
-|{utctime}|The UTC timestamp in ISO format when the notification is triggered.|Отметка времени UTC в формате ISO при запуске уведомления.|
-||**Stream Details**||
+|{utctime}|The UTC timestamp in ISO format when the notification is triggered.|Отметка времени UTC в формате ISO при запуске уведомления.|  
+**Stream Details**
+| Команда | En | Ru |
+|----------------|---------|----------------|
 |{streams}|The total number of concurrent streams.|Общее количество одновременных потоков.|
 |{direct_plays}|The total number of concurrent direct plays.|Общее количество одновременных прямых игр.|
 |{direct_streams}|The total number of concurrent direct streams.|Общее количество одновременных прямых потоков.|
@@ -126,7 +128,9 @@
 |{session_id}|The unique identifier for the stream.|Уникальный идентификатор потока.|
 |{user_id}|The unique identifier for the user.|Уникальный идентификатор для пользователя.|
 |{machine_id}|The unique identifier for the player.|Уникальный идентификатор игрока.|
-||**Source Metadata Details**||
+**Source Metadata Details**
+| Команда | En | Ru |
+|----------------|---------|----------------|
 |{media_type}|The type of media. (movie, show, season, episode, artist, album, track, clip)|Тип носителя. (фильм, шоу, сезон, эпизод, исполнитель, альбом, трек, клип)|
 |{title}|The full title of the item.|Полное название предмета.|
 |{library_name}|The library name of the item.|Название библиотеки предмета.|
@@ -237,7 +241,9 @@
 |{poster_thumb}|The Plex thumbnail for the poster image.|Миниатюра Plex для изображения постера.|
 |{poster_title}|The title for the poster image.|Название для изображения плаката.|
 |{indexes}|If the media has video preview thumbnails. (0 or 1)|Если на носителе есть миниатюры предварительного просмотра видео. (0 или 1)|
-||**Plex Remote Access**||
+**Plex Remote Access**
+| Команда | En | Ru |
+|----------------|---------|----------------|
 |{remote_access_mapping_state}|The mapping state of the Plex remote access port.|Состояние отображения порта удаленного доступа Plex.|
 |{remote_access_mapping_error}|The mapping error of the Plex remote access port.|Ошибка сопоставления порта удаленного доступа Plex.|
 |{remote_access_public_address}|The Plex remote access public IP address.|Общий IP-адрес удаленного доступа Plex.|
@@ -245,7 +251,9 @@
 |{remote_access_private_address}|The Plex remote access private IP address.|Plex удаленного доступа частный IP-адрес.|
 |{remote_access_private_port}|The Plex remote access private port.|Частный порт удаленного доступа Plex.|
 |{remote_access_reason}|The failure reason for Plex remote access going down.|Причина сбоя при удаленном доступе Plex.|
-||**Plex Update Available**||
+**Plex Update Available**
+| Команда | En | Ru |
+|----------------|---------|----------------|
 |{update_version}|The available update version for your Plex Server.|Доступная версия обновления для вашего сервера Plex.|
 |{update_url}|The download URL for the available update.|URL-адрес загрузки для доступного обновления.|
 |{update_release_date}|The release date of the available update.|Дата выхода доступного обновления.|
@@ -257,7 +265,9 @@
 |{update_extra_info}|Any extra info for the available update.|Любая дополнительная информация для доступного обновления.|
 |{update_changelog_added}|The added changelog for the available update.|Добавлен журнал изменений для доступного обновления.|
 |{update_changelog_fixed}|The fixed changelog for the available update.|Исправлен журнал изменений для доступного обновления.|
-||**Tautulli Update Available**||
+**Tautulli Update Available**
+| Команда | En | Ru |
+|----------------|---------|----------------|
 |{tautulli_update_version}|The available update version for Tautulli.|Доступна версия обновления для Tautulli.|
 |{tautulli_update_release_url}|The release page URL on GitHub.|URL страницы релиза на GitHub.|
 |{tautulli_update_tar}|The tar download URL for the available update.|URL загрузки tar для доступного обновления.|
