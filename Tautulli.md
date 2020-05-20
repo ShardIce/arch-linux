@@ -1,4 +1,4 @@
-**Global**
+## Global
 | Команда | En | Ru |
 |----------------|---------|----------------|
 |{tautulli_version}|The current version of Tautulli.|Текущая версия Таутулли.|
@@ -25,7 +25,7 @@
 |{timestamp}|The time (in time format) when the notification is triggered.|Время (в формате времени), когда срабатывает уведомление.|
 |{unixtime}|The unix timestamp when the notification is triggered.|Временная метка Unix при запуске уведомления.|
 |{utctime}|The UTC timestamp in ISO format when the notification is triggered.|Отметка времени UTC в формате ISO при запуске уведомления.|  
-**Stream Details**
+## Stream Details
 | Команда | En | Ru |
 |----------------|---------|----------------|
 |{streams}|The total number of concurrent streams.|Общее количество одновременных потоков.|
