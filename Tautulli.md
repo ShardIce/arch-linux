@@ -1,6 +1,6 @@
 | Команда | En | Ru |
 |----------------|---------|----------------|
-Global
+|Global|
 |{tautulli_version}|The current version of Tautulli.|Текущая версия Таутулли.|
 |{tautulli_remote}|The current git remote of Tautulli.|Нынешний мерзавец из Таутулли.|
 |{tautulli_branch}|The current git branch of Tautulli.|Текущий git филиал Tautulli.|
