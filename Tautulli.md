@@ -25,20 +25,14 @@
 |{timestamp}|The time (in time format) when the notification is triggered.|Время (в формате времени), когда срабатывает уведомление.|
 |{unixtime}|The unix timestamp when the notification is triggered.|Временная метка Unix при запуске уведомления.|
 |{utctime}|The UTC timestamp in ISO format when the notification is triggered.|Отметка времени UTC в формате ISO при запуске уведомления.|
-||***Stream Details***||
+||**Stream Details**||
 |{streams}|The total number of concurrent streams.|Общее количество одновременных потоков.|
 |{direct_plays}|The total number of concurrent direct plays.|Общее количество одновременных прямых игр.|
 |{direct_streams}|The total number of concurrent direct streams.|Общее количество одновременных прямых потоков.|
 |{transcodes}|The total number of concurrent transcodes.|Общее количество одновременных транскодов.|
-|{total_bandwidth}|The total Plex Streaming Brain reserved bandwidth (in kbps).|Общая пропускная способность Plex Streaming Brain (в кбит / с).|
-|(not the used bandwidth)|||
-||||
-|{lan_bandwidth}|The total Plex Streaming Brain reserved LAN bandwidth (in kbps).|Общая пропускная способность Plex Streaming Brain LAN (в кбит / с).|
-|(not the used bandwidth)|||
-||||
-|{wan_bandwidth}|The total Plex Streaming Brain reserved WAN bandwidth (in kbps).|Общая Plex Streaming Brain зарезервированная полоса пропускания WAN (в кбит / с).|
-|(not the used bandwidth)|||
-||||
+|{total_bandwidth}|The total Plex Streaming Brain reserved bandwidth (in kbps).(not the used bandwidth)|Общая пропускная способность Plex Streaming Brain (в кбит / с).|
+|{lan_bandwidth}|The total Plex Streaming Brain reserved LAN bandwidth (in kbps).(not the used bandwidth)|Общая пропускная способность Plex Streaming Brain LAN (в кбит / с).|
+|{wan_bandwidth}|The total Plex Streaming Brain reserved WAN bandwidth (in kbps).(not the used bandwidth)|Общая Plex Streaming Brain зарезервированная полоса пропускания WAN (в кбит / с).|
 |{user_streams}|The number of concurrent streams by the user streaming.|Количество одновременных потоков пользователем потоковой передачи.|
 |{user_direct_plays}|The number of concurrent direct plays by the user streaming.|Количество одновременных прямых воспроизведений потокового пользователя.|
 |{user_direct_streams}|The number of concurrent direct streams by the user streaming.|Количество одновременных прямых потоков пользователем потоковой передачи.|
@@ -76,9 +70,7 @@
 |{relayed}|If the stream is using Plex Relay. (0 or 1)|Если поток использует Plex Relay. (0 или 1)|
 |{stream_local}|If the stream is local. (0 or 1)|Если поток локальный. (0 или 1)|
 |{stream_location}|The network location of the stream. (lan or wan)|Сетевое местоположение потока. (LAN или WAN)|
-|{stream_bandwidth}|The Plex Streaming Brain reserved bandwidth (in kbps) of the stream.|Plex Streaming Brain зарезервировал пропускную способность (в кбит / с) потока.|
-|(not the used bandwidth)|||
-||||
+|{stream_bandwidth}|The Plex Streaming Brain reserved bandwidth (in kbps) of the stream.(not the used bandwidth)|Plex Streaming Brain зарезервировал пропускную способность (в кбит / с) потока.|
 |{stream_container}|The media container of the stream.|Медиа контейнер потока.|
 |{stream_bitrate}|The bitrate (in kbps) of the stream.|Битрейт (в кбит / с) потока.|
 |{stream_aspect_ratio}|The aspect ratio of the stream.|Соотношение сторон потока.|
