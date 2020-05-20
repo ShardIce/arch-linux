@@ -24,7 +24,8 @@
 |{datestamp}|The date (in date format) when the notification is triggered.|Дата (в формате даты), когда срабатывает уведомление.|
 |{timestamp}|The time (in time format) when the notification is triggered.|Время (в формате времени), когда срабатывает уведомление.|
 |{unixtime}|The unix timestamp when the notification is triggered.|Временная метка Unix при запуске уведомления.|
-|{utctime}|The UTC timestamp in ISO format when the notification is triggered.|Отметка времени UTC в формате ISO при запуске уведомления.|  
+|{utctime}|The UTC timestamp in ISO format when the notification is triggered.|Отметка времени UTC в формате ISO при запуске уведомления.|
+   
 ## Stream Details
 | Команда | En | Ru |
 |----------------|---------|----------------|
