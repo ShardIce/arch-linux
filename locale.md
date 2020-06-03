@@ -1,28 +1,34 @@
 # Руссифицируем (Локализация) Arch-linux GUI
 Запускаем консоль
 
-Вводим команду
+Открываем файл `/etc/locale.gen`
 ```text
 #  nano /etc/locale.gen
 ```      
+Раскомментируем строку      
+```text
+en_US.UTF-8 UTF-8
+ru_RU.UTF-8 UTF-8
+```
 > Нажми `CTRL+O` далее `Enter`, далее `CTRL+X`   
-      
-Редактируем файл `/etc/locale.gen`
-> раскомментируй строку с ru_RU.UTF-8 UTF-8, после чего сгенерируй их введя команду:
+
+Генерируем локали
 ```text
 # locale-gen  
 ```      
-> Нажми `CTRL+O` далее `Enter`, далее `CTRL+X`   
+> Нажимаем `Enter`
       
-Создай файл `locale.conf`
+Создаём файл `locale.conf`
 ```text
 # nano /etc/locale.conf
 ```
-Введи `LANG=ru_RU.UTF-8`
+Вводим
+```text
+LANG=ru_RU.UTF-8`
+```
 > Нажми `CTRL+O` далее `Enter`, далее `CTRL+X`
 
-Изменяем раскладку клавиатуры
-вводим в консоле
+Изменяем раскладку клавиатуры вводя в консоле
 ```text
 #  nano /etc/vconsole.conf
 ```
