@@ -47,5 +47,9 @@ __SDDM__ `(download: 21.50MiB, total size: 91.96 MiB)`
   
   
 ## Памятка
-#### Создаём `users`
-см. [install.md](install.md#заводим-пользователя)
+#### Установка `GUI` - Графический интерфейс
+см. [GUI.md](GUI.md)
+#### Локализация `GUI` - русификация графического интерфейса
+см. [locale.md](locale.md)
+#### Создаём `users` - заводим-пользователя
+см. [install.md](install.md)
