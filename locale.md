@@ -24,7 +24,7 @@ ru_RU.UTF-8 UTF-8
 ```
 Вводим
 ```text
-LANG=ru_RU.UTF-8`
+LANG=ru_RU.UTF-8
 ```
 > Нажми `CTRL+O` далее `Enter`, далее `CTRL+X`
 
