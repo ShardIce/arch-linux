@@ -5,14 +5,11 @@
 ```
 Ищем строку 
 `### END /etc/grub.d/00_header ###` 
-и чуть выше строка
+и чуть выше строки
 ```set timeout=5```
 меняем на 
 ```set timeout=0```
 
-```text
-# sudo pacman -S lightdm
-```
- 
-Total Download Size:   0.20 MiB
-Total Installed Size:  1.91 MiB
+#### Убираем зависание загрузки SDDM
+Удалить файл `.Xauthority`
+> Не перезагружаясь выйти из сеанса и опять авторизоваться.
