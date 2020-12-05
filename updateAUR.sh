@@ -6,7 +6,7 @@ cd $PWD$path1
 echo $PWD
 echo -e "\n"
 
-# Указываем названия пакетов с двойных ковычках
+# Указываем названия пакетов с двойными ковычками
 for var in "qtox-git" "plex-media-server" "tautulli" "anydesk-bin" "rclone-browser" "timeshift"
 do
 echo -e "\e[1;37;1;42m Скачиваем $var \e[0m"
