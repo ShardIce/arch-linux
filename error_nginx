@@ -1,0 +1,5 @@
+Решение проблемы с ошибкой «could not build optimal types_hash» в Nginx
+
+Откройте файл nginx.conf и в секцию http после добавьте:
+
+# types_hash_max_size 4096;
