@@ -15,6 +15,7 @@
 ```text
 #  systemctl enable sshd.service
 ```
+#### Доступ из под Root'a
 Теперь открываем настройки SSH:
 ```text
 # nano /etc/ssh/sshd_config
