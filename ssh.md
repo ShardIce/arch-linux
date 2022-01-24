@@ -23,10 +23,7 @@
 ```text
 # PermitRootLogin yes
 ```
-    
-
-
-
-    
-
- 
+Перезапускаем демона openssh
+```text
+#  systemctl restart sshd.service
+```
