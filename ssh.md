@@ -15,6 +15,14 @@
 ```text
 #  systemctl enable sshd.service
 ```
+Теперь открываем настройки SSH:
+```text
+# nano /etc/ssh/sshd_config
+```
+Теперь открываем настройки SSH:
+```text
+# PermitRootLogin yes
+```
     
 
 
