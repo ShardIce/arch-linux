@@ -36,13 +36,13 @@ __SDDM__ `(download: 21.50MiB, total size: 91.96 MiB)`
   
 ### Проверяем экранный менеджер на работоспасобность  
 ```text
-# systemctl start lxdm.service
+# systemctl start sddm.service
 ```  
 !Если установили обо для просмотра то просто ___lxdm___ заменить на ___sddm___ и посмотреть.  
 
 Если сработало, то запускаем на _автоматическом режиме_
 ```text
-# systemctl enable lxdm.service
+# systemctl enable sddm.service
 ```
   
   
