@@ -30,16 +30,15 @@ cat <<EOF >>/etc/pacman.d/mirrorlist
 #Server = http://archlinux.zepto.cloud/$repo/os/$arch
 Server = https://mirror.yandex.ru/archlinux/\$repo/os/\$arch
 Server = https://mirror.23media.com/archlinux/\$repo/os/\$arch
-
 EOF
-
-# Разметка диска
-cfdisk /dev/sda
 
 # Активируем новые репы
 pacman-key --init
 pacman-key --populate archlinux
 pacman -Sy
+
+# Разметка диска
+cfdisk /dev/sda
 
 #Форматируем в ext 4 наш диск
 mkfs.ext4 /dev/sda1
@@ -66,14 +65,40 @@ pacstrap /mnt grub-bios
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
 
+#Начинаем использование системы
+arch-chroot /mnt
 
 #Прокидываем правильные быстрые репы внутрь
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
 
 # Делаем скрипт пост инстала:
-cat <<EOF  >> /mnt/opt/install.sh
+cat <<EOF >> /mnt/opt/install.sh
 #!/bin/bash
+
+#Обновим ключики на всякий пожарный
+pacman-key --init
+pacman-key --populate archlinux
+
+# Создаем файл о нашем железе
+mkinitcpio -p linux
+
+sleep 1
+echo "password for root user:"
+passwd root
+
+echo "add new user"
+useradd -mg users -G wheel -s /bin/bash shardice
+echo "paaswd for new user"
+passwd shardice
+
+#it's not beautiful
+grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+sleep 1
+echo "Hostname"
+hostnamectl set-hostname ArchPC
 
 echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen
 echo "KEYMAP=ru" >> /etc/vconsole.conf
@@ -86,50 +111,37 @@ localectl set-locale LANG="ru_RU.UTF-8"
 
 sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
-# Создаем файл о нашем железе
-mkinitcpio -p linux
 
 #########
 nano /etc/sudoers
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+
 #it's not beautiful
 nano /etc/pacman.conf
 echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
-#it's not beautiful
 
-grub-install /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
-pacman-key --init
-pacman-key --populate archlinux
-pacman -Sy xorg xorg-server mate mate-extra sddm sudo git
+# Устанавливаем нужные пакеты
+pacman -Sy xorg xorg-server mate mate-extra sddm
 
-pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet ppp chromium neofetch filezilla htop blueman fuse --noconfirm
-systemctl enable NetworkManager.service
-systemctl enable dhcpcd.service
+# Сеть
+pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet
 
-systemctl enable sddm.service
-stemctl start sddm.service
+pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm
 
-sleep 1
-echo "password for root user:"
-passwd
-echo "add new user"
-useradd -mg users -G wheel -s /bin/bash DzSoft
-echo "paaswd for new user"
-passwd
+# Включаем экран логирования
+systemctl enable sddm
+stemctl start sddm
 
-sleep 1
-echo "Hostname"
-hostnamectl set-hostname ArchPC 
-
+# Подстрахуемся и включим повторно DHCP
 echo "Install DHCPD"
 systemctl enable dhcpcd
 systemctl start dhcpcd
 
+# Включаем сетевой менеджер
+systemctl enable NetworkManager
+
 exit
-
-
 EOF
 
 arch-chroot /mnt /bin/bash  /opt/install.sh
