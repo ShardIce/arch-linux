@@ -17,7 +17,6 @@ cat <<EOF >>/etc/pacman.d/mirrorlist
 ##
 
 ## Russia
-## Russia
 #Server = http://mirror.surf/archlinux/$repo/os/$arch
 #Server = https://mirror.surf/archlinux/$repo/os/$arch
 #Server = http://mirror.nw-sys.ru/archlinux/$repo/os/$arch
