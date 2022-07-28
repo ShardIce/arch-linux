@@ -71,7 +71,7 @@ _Далее заходим в пункт "**Write**" пишем "**yes**" и д�
 
 #### Обновление "PGP"
 ```text
-# archlinux-keyring
+# pacman -S archlinux-keyring
 ```
 # 
 
