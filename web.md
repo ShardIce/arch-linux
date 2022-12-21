@@ -69,6 +69,7 @@ sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 sudo nano /etc/nginx/nginx.conf
 
 И скопируйте в него следующее:
+```text
 #user html;
  
 worker_processes  2;
@@ -132,6 +133,7 @@ http {
         }
     }         
 }
+```
 
 Перезапустим службы Nginx и PHP-FPM
 sudo systemctl restart php-fpm
