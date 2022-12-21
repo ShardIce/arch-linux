@@ -1,12 +1,16 @@
 https://blackarch.ru/?p=1029
 
 
-Установка Nginx
-Установка Nginx выполняется следующей командой:
+# Установка Nginx
+#### Установка Nginx выполняется следующей командой:
+```text
 sudo pacman -S nginx
+```
 
-Запустите службу:
+#### Запустите службу:
+```text
 sudo systemctl start nginx
+```
 
 И проверьте её статус:
 sudo systemctl status nginx
