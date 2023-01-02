@@ -17,7 +17,7 @@ sudo nano /etc/fstab
 ```text
 UUID=8efc5d95-54b9-4bad-a33a-ae0b8*******               /home/media/         ext4            rw,relatime     0 3
 ```
-> UUID - это ID вашего диска. 
+> UUID - это ID вашего диска.   \n
 > /home/media/ - это путь к папки куда монтируется
 > ext4 - файловая система
 > rw - read/write.
