@@ -1,3 +1,3 @@
 # Копирвоание файлов
-cp
+cp </br>
 rsync -ah --progress
