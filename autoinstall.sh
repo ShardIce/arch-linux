@@ -38,21 +38,44 @@ pacman-key --populate archlinux
 pacman -Sy
 
 # только для теста - стирает все разделы
-dd if=/dev/zero of=/dev/sda bs=1M count=100 status=progress
+dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
 # Разметка диска
 printf "g\nw\n" | fdisk /dev/sda # создаём gpt
 printf "n\n1\n\n+1G\nt\n4\nw\n" | fdisk /dev/sda # первый раздел 1Гб
 printf "n\n2\n\n+10G\nt\n2\n19\nw\n" | fdisk /dev/sda # второй раздел 10Гб
 printf "n\n3\n\n\nw\n" | fdisk /dev/sda # третий раздел - остаток
-
  
-#Форматируем в ext 4 наш диск
+# Форматируем в ext 4 наш диск
 mkfs.ext4 /dev/sda1
 mkswap /dev/sda2
 swapon /dev/sda2
 mkfs.ext4 /dev/sda3
 
+# Монтируем диск к папке
+mount /dev/sda3 /mnt
+
+# Cоздадим несколько папок
+mkdir /mnt/boot /mnt/home /mnt/var
+
+# Подключаем нашу загрузочную папку в загрузочный раздел "bootable"
+mount /dev/sda1 /mnt/boot
+
+
+#Установка системы Arch Linux ядро + софт который нам нужен сразу
+pacstrap /mnt base base-devel linux linux-headers linux-firmware dhcpcd
+
+# Устанавливаем загрузчик
+pacstrap /mnt grub-bios
+
+# Прописываем fstab
+genfstab -p /mnt >> /mnt/etc/fstab
+
+#Начинаем использование системы
+arch-chroot /mnt
+
+#Прокидываем правильные быстрые репы внутрь
+cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
 
 
