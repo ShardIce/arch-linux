@@ -77,6 +77,75 @@ arch-chroot /mnt
 #Прокидываем правильные быстрые репы внутрь
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 
+# Делаем скрипт пост инстала:
+cat <<EOF >> /mnt/opt/install.sh
+#!/bin/bash
+#Обновим ключики на всякий пожарный
+pacman -S archlinux-keyring
+pacman-key --init
+pacman-key --populate archlinux
 
+# Создаем файл о нашем железе
+mkinitcpio -p linux
 
+sleep 1
+printf "password for root user:"
+passwd 
+printf "root"
+printf "add new user"
+useradd -mg users -G wheel -s /bin/bash shardice
+printf "paaswd for new user"
+passwd 
+printf "shardice"
 
+#it's not beautiful
+grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+sleep 1
+printf "Hostname"
+hostnamectl set-hostname ArchPC
+printf "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen
+printf "KEYMAP=ru" >> /etc/vconsole.conf
+printf "FONT=cyr-sun16" >> /etc/vconsole.conf
+printf 'LANG="ru_RU.UTF-8"' > /etc/locale.conf 
+printf "en_US.UTF-8 UTF-8" > /etc/locale.gen
+printf 'Обновим текущую локаль системы'
+locale-gen
+localectl set-locale LANG="ru_RU.UTF-8"
+
+sleep 1
+ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+
+######### nano /etc/sudoers.d/sudo
+printf '%wheel ALL=(ALL) ALL' >> /etc/sudoers.d/sudo
+
+#it's not beautiful
+nano /etc/pacman.conf
+printf '[multilib]' >> /etc/pacman.conf
+printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
+
+# Устанавливаем нужные пакеты
+pacman -Sy xorg xorg-server mate mate-extra sddm
+
+# Сеть
+pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet
+pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm
+
+# Включаем экран логирования
+systemctl enable sddm
+stemctl start sddm
+
+# Подстрахуемся и включим повторно DHCP
+printf "Install DHCPD"
+systemctl enable dhcpcd
+systemctl start dhcpcd
+
+# Включаем сетевой менеджер
+systemctl enable NetworkManager
+exit
+EOF
+
+arch-chroot /mnt /bin/bash  /opt/install.sh
+
+reboot
