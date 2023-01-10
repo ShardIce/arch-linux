@@ -38,10 +38,10 @@ pacman-key --populate archlinux
 pacman -Sy
 
 # Разметка диска
-printf "g\nw\n" | sfdisk /dev/sda # создаём gpt
-printf "n\n1\n\n+1G\nt\n2\n4\nw\n" | sfdisk /dev/sda # первый раздел 1Гб
-printf "n\n2\n\n+10G\n2\nw\n" | sfdisk /dev/sda # второй раздел 10Гб
-printf "n\n3\n\n\nw\n" | sfdisk /dev/sda # третий раздел - остаток
+printf "g\nw\n" | fdisk /dev/sda # создаём gpt
+printf "n\n1\n\n+1G\nt\n2\n4\nw\n" | fdisk /dev/sda # первый раздел 1Гб
+printf "n\n2\n\n+10G\n2\nw\n" | fdisk /dev/sda # второй раздел 10Гб
+printf "n\n3\n\n\nw\n" | fdisk /dev/sda # третий раздел - остаток
 
  
 #Форматируем в ext 4 наш диск
