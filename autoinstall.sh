@@ -38,11 +38,12 @@ pacman-key --populate archlinux
 pacman -Sy
 
 # Разметка диска
- echo -e "g\nw\n" | fdisk /dev/sda # создаём gpt
- echo -e "n\n1\n\n+1G\nw\n" | fdisk /dev/sda # первый раздел 1Гб
- echo -e "n\n2\n\n+10G\nw\n" | fdisk /dev/sda # второй раздел 10Гб
- echo -e "n\n3\n\n\nw\n" | fdisk /dev/sda # третий раздел - остаток
+printf -e "g\nw\n" | fdisk /dev/sda # создаём gpt
+printf -e "n\n1\n\n+1G\nt\n2\n4\nw\n" | fdisk /dev/sda # первый раздел 1Гб
+printf -e "n\n2\n\n+10G\n2\nw\n" | fdisk /dev/sda # второй раздел 10Гб
+printf -e "n\n3\n\n\nw\n" | fdisk /dev/sda # третий раздел - остаток
 
+ 
 #Форматируем в ext 4 наш диск
 mkfs.ext4 /dev/sda1
 mkswap /dev/sda2
