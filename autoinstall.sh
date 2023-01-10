@@ -86,12 +86,12 @@ mkinitcpio -p linux
 sleep 1
 echo "password for root user:"
 passwd root
-
+echo 'root'
 echo "add new user"
 useradd -mg users -G wheel -s /bin/bash shardice
 echo "paaswd for new user"
 passwd shardice
-
+echo 'shardice'
 #it's not beautiful
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
