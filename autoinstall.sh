@@ -38,9 +38,9 @@ pacman-key --populate archlinux
 pacman -Sy
 
 # Разметка диска
-cfdisk -h 1G /dev/sda1 -b
-cfdisk -h 10G /dev/sda2 -t 
-cfdisk /dev/sda3
+cfdisk -h 1G -L boot -t ext4 /dev/sda1
+cfdisk -h 10G -t ext4 /dev/sda2  
+cfdisk -h * -t ext4 /dev/sda3
 
 #Форматируем в ext 4 наш диск
 mkfs.ext4 /dev/sda1
