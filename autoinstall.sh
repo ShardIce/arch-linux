@@ -37,10 +37,13 @@ pacman-key --init
 pacman-key --populate archlinux
 pacman -Sy
 
+# только для теста - стирает все разделы
+dd if=/dev/zero of=/dev/sda bs=1M count=100 status=progress
+
 # Разметка диска
 printf "g\nw\n" | fdisk /dev/sda # создаём gpt
 printf "n\n1\n\n+1G\nt\n2\n4\nw\n" | fdisk /dev/sda # первый раздел 1Гб
-printf "n\n2\n\n+10G\nt\n2\n2\nw\n" | fdisk /dev/sda # второй раздел 10Гб
+printf "n\n2\n\n+10G\nt\n3\nw\n" | fdisk /dev/sda # второй раздел 10Гб
 printf "n\n3\n\n\nw\n" | fdisk /dev/sda # третий раздел - остаток
 
  
