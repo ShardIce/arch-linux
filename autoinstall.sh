@@ -38,9 +38,10 @@ pacman-key --populate archlinux
 pacman -Sy
 
 # Разметка диска
-cfdisk -h 1G -L boot -t ext4 /dev/sda1
-cfdisk -h 10G -t ext4 /dev/sda2  
-cfdisk -h * -t ext4 /dev/sda3
+ echo -e "g\nw\n" | fdisk /dev/sda # создаём gpt
+ echo -e "n\n1\n\n+1G\nw\n" | fdisk /dev/sda # первый раздел 1Гб
+ echo -e "n\n2\n\n+10G\nw\n" | fdisk /dev/sda # второй раздел 10Гб
+ echo -e "n\n3\n\n\nw\n" | fdisk /dev/sda # третий раздел - остаток
 
 #Форматируем в ext 4 наш диск
 mkfs.ext4 /dev/sda1
