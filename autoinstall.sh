@@ -74,6 +74,9 @@ genfstab -p /mnt >> /mnt/etc/fstab
 #Начинаем использование системы
 arch-chroot /mnt
 
+# Делаем скрипт пост инстала:
+cat <<EOF >> /mnt/opt/install.sh
+#!/bin/bash
 #Обновим ключики на всякий пожарный
 pacman -S archlinux-keyring
 printf "Y"
@@ -132,3 +135,10 @@ systemctl start dhcpcd
 # Включаем экран логирования
 systemctl enable sddm
 stemctl start sddm
+
+exit
+EOF
+
+systemctl enable dhcpcd
+systemctl start dhcpcd
+systemctl status dhcpcd
