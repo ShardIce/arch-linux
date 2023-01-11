@@ -54,13 +54,14 @@ mkfs.ext4 /dev/sda3
 
 # Монтируем диск к папке
 mount /dev/sda3 /mnt
+mountpoint /mnt
 
 # Cоздадим несколько папок
 mkdir /mnt/boot /mnt/home /mnt/var
 
 # Подключаем нашу загрузочную папку в загрузочный раздел "bootable"
 mount /dev/sda1 /mnt/boot
-
+mountpoint /mnt/boot
 
 #Установка системы Arch Linux ядро + софт который нам нужен сразу
 pacstrap /mnt base base-devel linux linux-headers linux-firmware dhcpcd
