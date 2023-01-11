@@ -84,13 +84,10 @@ pacman-key --populate archlinux
 mkinitcpio -p linux
 
 sleep 1
-printf "password for root user:"
 passwd 
 printf "root"
-printf "add new user"
 useradd -mg users -G wheel -s /bin/bash shardice
-printf "paaswd for new user"
-passwd 
+passwd shardice
 printf "shardice"
 
 #it's not beautiful
@@ -116,7 +113,7 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 printf '%wheel ALL=(ALL) ALL' >> /etc/sudoers.d/sudo
 
 #it's not beautiful
-nano /etc/pacman.conf
+#nano /etc/pacman.conf
 printf '[multilib]' >> /etc/pacman.conf
 printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 
@@ -128,7 +125,7 @@ pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet
 pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm
 
 # Подстрахуемся и включим повторно DHCP
-printf "Install DHCPD"
+# printf "Install DHCPD"
 systemctl enable dhcpcd
 systemctl start dhcpcd
 
