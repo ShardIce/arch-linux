@@ -1,4 +1,6 @@
-#!/bin/bash -x
+#!/bin/bash 
+
+set -x
 
 #/dev/sda1 - /boot
 #/dev/sda2 - swap 
