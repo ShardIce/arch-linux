@@ -75,6 +75,7 @@ pacstrap /mnt grub-bios
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
 
+mkdir -R /root/mnt/var/tmp
 # Делаем скрипт пост инстала:
 cat <<EOF>> /root/mnt/var/tmp/install.sh
 #!/bin/bash
