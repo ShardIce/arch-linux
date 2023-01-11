@@ -1,10 +1,8 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #/dev/sda1 - /boot
 #/dev/sda2 - swap 
 #/dev/sda3 - /
-
-
 
 # Ставим быстрые репы
 
@@ -38,7 +36,7 @@ pacman-key --populate archlinux
 pacman -Sy
 
 # только для теста - стирает все разделы
-dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
+# dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
 # Разметка диска
 printf "g\nw\n" | fdisk /dev/sda # создаём gpt
