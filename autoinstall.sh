@@ -76,6 +76,7 @@ arch-chroot /mnt
 
 #Обновим ключики на всякий пожарный
 pacman -S archlinux-keyring
+printf "Y"
 pacman-key --init
 pacman-key --populate archlinux
 
@@ -126,12 +127,11 @@ pacman -Sy xorg xorg-server mate mate-extra sddm
 pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet
 pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm
 
-# Включаем экран логирования
-systemctl enable sddm
-stemctl start sddm
-
 # Подстрахуемся и включим повторно DHCP
 printf "Install DHCPD"
 systemctl enable dhcpcd
 systemctl start dhcpcd
 
+# Включаем экран логирования
+systemctl enable sddm
+stemctl start sddm
