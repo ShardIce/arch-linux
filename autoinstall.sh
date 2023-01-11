@@ -34,9 +34,11 @@ Server = https://mirror.23media.com/archlinux/\$repo/os/\$arch
 EOF
 
 # Активируем новые репы
+#Обновим ключики на всякий пожарный
+pacman -S archlinux-keyring
+printf "Y"
 pacman-key --init
 pacman-key --populate archlinux
-pacman -Sy
 
 # только для теста - стирает все разделы
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
@@ -79,11 +81,9 @@ arch-chroot /mnt
 # Делаем скрипт пост инстала:
 cat <<EOF>> /mnt/opt/install.sh
 #!/bin/bash
-#Обновим ключики на всякий пожарный
-pacman -S archlinux-keyring
-printf "Y"
-pacman-key --init
-pacman-key --populate archlinux
+
+# Обновление репозиториев
+pacman -Sy
 
 # Создаем файл о нашем железе
 mkinitcpio -p linux
