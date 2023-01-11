@@ -76,7 +76,7 @@ pacstrap /mnt grub-bios
 genfstab -p /mnt >> /mnt/etc/fstab
 
 # Делаем скрипт пост инстала:
-cat <<EOF>> /mnt/var/tmp/install.sh
+cat <<EOF>> /root/mnt/var/tmp/install.sh
 #!/bin/bash
 
 # Обновление репозиториев
