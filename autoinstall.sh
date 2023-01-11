@@ -9,7 +9,7 @@ set -x
 # Ставим быстрые репы
 
 > /etc/pacman.d/mirrorlist
-cat <<EOF >>/etc/pacman.d/mirrorlist
+cat <<EOF>>/etc/pacman.d/mirrorlist
 
 ##
 ## Arch Linux repository mirrorlist
@@ -78,10 +78,8 @@ genfstab -p /mnt >> /mnt/etc/fstab
 #Начинаем использование системы
 arch-chroot /mnt
 
-mkdir /mnt/opt/
-
 # Делаем скрипт пост инстала:
-cat <<EOF>> /mnt/opt/install.sh
+cat <<EOF>> /mnt/var/tmp/install.sh
 #!/bin/bash
 
 # Обновление репозиториев
