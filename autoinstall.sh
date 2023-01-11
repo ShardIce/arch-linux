@@ -30,6 +30,7 @@ cat <<EOF >>/etc/pacman.d/mirrorlist
 #Server = http://archlinux.zepto.cloud/$repo/os/$arch
 Server = https://mirror.yandex.ru/archlinux/\$repo/os/\$arch
 Server = https://mirror.23media.com/archlinux/\$repo/os/\$arch
+
 EOF
 
 # Активируем новые репы
