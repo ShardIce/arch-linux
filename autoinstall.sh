@@ -75,9 +75,6 @@ pacstrap /mnt grub-bios
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
 
-#Начинаем использование системы
-arch-chroot /mnt
-
 # Делаем скрипт пост инстала:
 cat <<EOF>> /mnt/var/tmp/install.sh
 #!/bin/bash
@@ -140,6 +137,9 @@ stemctl start sddm
 
 exit
 EOF
+
+#Начинаем использование системы
+arch-chroot /mnt
 
 systemctl enable dhcpcd
 systemctl start dhcpcd
