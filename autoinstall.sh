@@ -78,6 +78,8 @@ genfstab -p /mnt >> /mnt/etc/fstab
 #Начинаем использование системы
 arch-chroot /mnt
 
+mkdir /mnt/opt/
+
 # Делаем скрипт пост инстала:
 cat <<EOF>> /mnt/opt/install.sh
 #!/bin/bash
