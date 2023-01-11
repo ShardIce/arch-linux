@@ -141,11 +141,9 @@ printf "Install DHCPD"
 systemctl enable dhcpcd
 systemctl start dhcpcd
 
-# Включаем сетевой менеджер
-systemctl enable NetworkManager
 exit
 EOF
 
 arch-chroot /mnt /bin/bash  /opt/install.sh
 
-reboot
+
