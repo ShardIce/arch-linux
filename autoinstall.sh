@@ -75,9 +75,11 @@ pacstrap /mnt grub-bios
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
 
-mkdir -R /root/mnt/var/tmp
+#Начинаем использование системы
+arch-chroot /mnt
+
 # Делаем скрипт пост инстала:
-cat <<EOF>> /root/mnt/var/tmp/install.sh
+cat <<EOF>> /mnt/opt/install.sh
 #!/bin/bash
 
 # Обновление репозиториев
@@ -121,11 +123,11 @@ printf '[multilib]' >> /etc/pacman.conf
 printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 
 # Устанавливаем нужные пакеты
-pacman -Sy xorg xorg-server mate mate-extra sddm
+pacman -Sy xorg xorg-server mate mate-extra sddm --noconfirm
 
 # Сеть
-pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet
-pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm
+pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet --noconfirm
+pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm 
 
 # Подстрахуемся и включим повторно DHCP
 # printf "Install DHCPD"
@@ -139,8 +141,9 @@ stemctl start sddm
 exit
 EOF
 
-#Начинаем использование системы
-arch-chroot /mnt
+echo '12. Переходим в новое окружение'
+cp install.sh /mnt/opt/install.sh
+chroot /mnt/opt /install.sh
 
 systemctl enable dhcpcd
 systemctl start dhcpcd
