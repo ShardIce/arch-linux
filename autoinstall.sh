@@ -81,6 +81,7 @@ chroot /mnt/opt /install.sh
 
 
 # Делаем скрипт пост инстала:
+> /mnt/opt/
 cat <<EOF>>/mnt/opt/install.sh
 #!/bin/bash
 
