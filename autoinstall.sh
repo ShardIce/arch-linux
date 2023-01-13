@@ -140,6 +140,7 @@ stemctl start sddm
 exit
 EOF
 
+mkdir /mnt/opt
 echo '12. Переходим в новое окружение'
 cp install.sh /mnt/opt/install.sh
 chroot /mnt/opt /install.sh
