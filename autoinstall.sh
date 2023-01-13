@@ -81,7 +81,7 @@ chroot /mnt/opt /install.sh
 
 
 # Делаем скрипт пост инстала:
-cat <<EOF>> /mnt/opt/install.sh
+cat <<EOF>>/mnt/opt/install.sh
 #!/bin/bash
 
 # Обновление репозиториев
