@@ -35,8 +35,7 @@ EOF
 
 # Активируем новые репы
 #Обновим ключики на всякий пожарный
-pacman -S archlinux-keyring
-printf "Y"
+pacman -S archlinux-keyring  --noconfirm
 pacman-key --init
 pacman-key --populate archlinux
 
