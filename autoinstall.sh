@@ -74,10 +74,6 @@ pacstrap /mnt grub-bios
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
 
-mkdir /mnt/opt
-echo '12. Переходим в новое окружение'
-cp install.sh /mnt/opt/install.sh
-chroot /mnt/opt /install.sh
 
 
 # Делаем скрипт пост инстала:
@@ -143,6 +139,12 @@ stemctl start sddm
 
 exit
 EOF
+
+mkdir /mnt/opt
+echo '12. Переходим в новое окружение'
+cp install.sh /mnt/opt/install.sh
+chroot /mnt/opt /install.sh
+
 
 #Начинаем использование системы
 arch-chroot /mnt
