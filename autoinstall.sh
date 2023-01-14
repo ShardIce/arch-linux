@@ -74,7 +74,7 @@ pacstrap /mnt grub-bios
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
 
-mkdir /mnt/opt
+#mkdir /mnt/opt
 #mount /mnt/opt
 
 # Делаем скрипт пост инстала:
