@@ -88,9 +88,11 @@ pacman -Sy
 mkinitcpio -p linux
 
 sleep 1
-echo root:root | chpasswd
+#echo root:root | chpasswd
+printf "root\nroot\n" | passwd
+
 useradd -mg users -G wheel -s /bin/bash shardice
-echo shardice:1002 | chpasswd
+printf "1002\n1002\n | passwd shardice
 
 #it's not beautiful
 grub-install /dev/sda
@@ -143,7 +145,7 @@ cp install.sh /mnt/opt/install.sh
 
 #Начинаем использование системы
 arch-chroot /mnt
-bash /mnt/opt/install.sh
+arch-chroot /mnt bash /mnt/opt/install.sh
 
 systemctl enable dhcpcd
 systemctl start dhcpcd
