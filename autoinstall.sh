@@ -88,11 +88,9 @@ pacman -Sy
 mkinitcpio -p linux
 
 sleep 1
-passwd 
-printf "root"
+echo root:root | chpasswd
 useradd -mg users -G wheel -s /bin/bash shardice
-passwd shardice
-printf "shardice"
+echo shardice:1002 | chpasswd
 
 #it's not beautiful
 grub-install /dev/sda
