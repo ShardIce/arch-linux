@@ -36,8 +36,8 @@ EOF
 # Активируем новые репы
 #Обновим ключики на всякий пожарный
 pacman -S archlinux-keyring --noconfirm
-pacman-key --init
-pacman-key --populate archlinux
+#pacman-key --init
+#pacman-key --populate archlinux
 
 # только для теста - стирает все разделы
 dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
@@ -75,7 +75,7 @@ pacstrap /mnt grub-bios
 genfstab -p /mnt >> /mnt/etc/fstab
 
 mkdir /mnt/opt
-mount /mnt/opt
+#mount /mnt/opt
 
 # Делаем скрипт пост инстала:
 cat <<EOF>>/mnt/opt/install.sh
@@ -142,7 +142,10 @@ exit
 EOF
 
 echo '14. Переход в новое окружение'
-arch-chroot /mnt /bin/bash /mnt/opt/install.sh
+arch-chroot /mnt /bin/bash -c /mnt/opt/install.sh
+
+# Вариант 2
+# chroot /mnt/opt /bin/bash
 
 #Начинаем использование системы
 #arch-chroot /mnt
