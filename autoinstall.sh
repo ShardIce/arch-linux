@@ -40,7 +40,7 @@ pacman-key --init
 pacman-key --populate archlinux
 
 # только для теста - стирает все разделы
-# dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
+dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
 # Разметка диска
 printf "g\nw\n" | fdisk /dev/sda # создаём gpt
@@ -74,8 +74,8 @@ pacstrap /mnt grub-bios
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
 
-mkdir /mnt/opt
-mount /mnt/opt
+#mkdir /mnt/opt
+#mount /mnt/opt
 
 # Делаем скрипт пост инстала:
 > /mnt/opt/
@@ -143,11 +143,12 @@ EOF
 
 echo '12. Переходим в новое окружение'
 cp install.sh /mnt/opt/install.sh
-arch-chroot /mnt/opt /install.sh
+arch-chroot /mnt sh /mnt/opt/install.sh
+
 
 
 #Начинаем использование системы
-arch-chroot /mnt
+#arch-chroot /mnt
 
 systemctl enable dhcpcd
 systemctl start dhcpcd
