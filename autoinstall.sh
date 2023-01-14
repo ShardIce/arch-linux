@@ -118,8 +118,9 @@ printf "%wheel ALL=(ALL) ALL\n" >> /etc/sudoers.d/sudo
 
 #it's not beautiful
 #nano /etc/pacman.conf
-printf '[multilib]' >> /etc/pacman.conf
-printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
+#printf '[multilib]' >> /etc/pacman.conf
+#printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
+sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
 
 # Устанавливаем нужные пакеты
 pacman -Sy xorg xorg-server mate mate-extra sddm --noconfirm
@@ -140,12 +141,12 @@ systemctl start sddm
 exit
 EOF
 
-echo '12. Переходим в новое окружение'
-cp install.sh /mnt/opt/install.sh
+echo '14. Переход в новое окружение'
+arch-chroot /mnt /bin/bash /arch-install-scripts-main/install.sh
 
 #Начинаем использование системы
-arch-chroot /mnt
-arch-chroot /mnt bash /mnt/opt/install.sh
+#arch-chroot /mnt
+#arch-chroot /mnt bash /mnt/opt/install.sh
 
 systemctl enable dhcpcd
 systemctl start dhcpcd
