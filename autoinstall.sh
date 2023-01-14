@@ -143,11 +143,17 @@ EOF
 mkdir /mnt/opt
 echo '12. Переходим в новое окружение'
 cp install.sh /mnt/opt/install.sh
-chroot /mnt/opt /install.sh
+arch-chroot /mnt/opt /install.sh
 
+
+chroot /mnt/gentoo /bin/bash -c "install_gentoo_chroot"
+}
+
+install_gentoo_chroot('Hello world')
+{
 
 #Начинаем использование системы
-arch-chroot /mnt
+# arch-chroot /mnt
 
 systemctl enable dhcpcd
 systemctl start dhcpcd
