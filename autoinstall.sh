@@ -70,12 +70,10 @@ EOF
 
 echo '12. Переходим в новое окружение'
 cp install.sh /mnt/opt/install.sh
-arch-chroot /mnt sh /mnt/opt/install.sh
-
-
 
 #Начинаем использование системы
-#arch-chroot /mnt
+arch-chroot /mnt
+bash /mnt/opt/install.sh
 
 systemctl enable dhcpcd
 systemctl start dhcpcd
