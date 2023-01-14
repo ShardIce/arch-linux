@@ -142,7 +142,7 @@ exit
 EOF
 
 echo '14. Переход в новое окружение'
-arch-chroot /mnt /bin/bash /arch-install-scripts-main/install.sh
+arch-chroot /mnt /bin/bash /mnt/opt/install.sh
 
 #Начинаем использование системы
 #arch-chroot /mnt
