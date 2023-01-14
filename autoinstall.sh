@@ -74,7 +74,8 @@ pacstrap /mnt grub-bios
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
 
-
+mkdir /mnt/opt
+mount /mnt/opt
 
 # Делаем скрипт пост инстала:
 > /mnt/opt/
@@ -140,20 +141,13 @@ stemctl start sddm
 exit
 EOF
 
-mkdir /mnt/opt
 echo '12. Переходим в новое окружение'
 cp install.sh /mnt/opt/install.sh
 arch-chroot /mnt/opt /install.sh
 
 
-chroot /mnt/gentoo /bin/bash -c "install_gentoo_chroot"
-}
-
-install_gentoo_chroot('Hello world')
-{
-
 #Начинаем использование системы
-# arch-chroot /mnt
+arch-chroot /mnt
 
 systemctl enable dhcpcd
 systemctl start dhcpcd
