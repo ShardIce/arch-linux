@@ -34,8 +34,6 @@ Server = https://mirror.23media.com/archlinux/\$repo/os/\$arch
 EOF
 
 # Активируем новые репы
-#Обновим ключики на всякий пожарный
-pacman -S archlinux-keyring --noconfirm
 #pacman-key --init
 #pacman-key --populate archlinux
 
@@ -82,6 +80,9 @@ arch-chroot /mnt /bin/bash -c /opt/install.sh
 # Делаем скрипт пост инстала:
 cat <<EOF>>/opt/install.sh
 #!/bin/bash
+
+#Обновим ключики на всякий пожарный
+pacman -S archlinux-keyring --noconfirm
 
 # Обновление репозиториев
 pacman -Sy
