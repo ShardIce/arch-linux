@@ -73,10 +73,6 @@ pacstrap /mnt grub-bios
 genfstab -p /mnt >> /mnt/etc/fstab
 
 
-echo '14. Переход в новое окружение'
-# chmod 0777 /mnt/opt/install.sh
-arch-chroot /mnt /bin/bash -c /opt/install.sh
-
 # Делаем скрипт пост инстала:
 cat <<EOF>>/opt/install.sh
 #!/bin/bash
@@ -144,7 +140,9 @@ systemctl start sddm
 exit
 EOF
 
-
+echo '14. Переход в новое окружение'
+chmod 0777 /mnt/opt/install.sh
+arch-chroot /mnt /bin/bash -c /opt/install.sh
 
 # Вариант 2
 # chroot /mnt/opt /bin/bash
