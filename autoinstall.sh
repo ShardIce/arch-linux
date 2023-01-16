@@ -36,6 +36,7 @@ EOF
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
 # Активируем новые репы
+pacman -S archlinux-keyring --noconfirm
 pacman-key --init
 pacman-key --populate archlinux
 
