@@ -64,20 +64,20 @@ mount /dev/sda1 /mnt/boot
 mountpoint /mnt/boot
 
 # Установка системы Arch Linux ядро + софт который нам нужен сразу
-# pacstrap /mnt base base-devel linux linux-headers linux-firmware dhcpcd
+pacstrap /mnt base base-devel linux linux-headers linux-firmware
 
 # Устанавливаем загрузчик
-# pacstrap /mnt grub-bios
+pacstrap /mnt grub-bios
 
 # Прописываем fstab
-# genfstab -p /mnt >> /mnt/etc/fstab
+genfstab -p /mnt >> /mnt/etc/fstab
 
 # Делаем скрипт пост инстала:
 cat <<EOF>>/opt/install.sh
 #!/bin/bash
 
 #Обновим ключики на всякий пожарный
-pacman -S archlinux-keyring --noconfirm
+pacman -S archlinux-keyring dhcpcd --noconfirm
 
 # Обновление репозиториев
 pacman -Sy
@@ -131,6 +131,7 @@ pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfir
 # printf "Install DHCPD"
 systemctl enable dhcpcd
 systemctl start dhcpcd
+systemctl status dhcpcd
 
 # Включаем экран логирования
 systemctl enable sddm
@@ -149,7 +150,3 @@ arch-chroot /mnt /usr/bin/bash /opt/install.sh
 #Начинаем использование системы
 #arch-chroot /mnt
 #arch-chroot /mnt bash /mnt/opt/install.sh
-
-systemctl enable dhcpcd
-systemctl start dhcpcd
-systemctl status dhcpcd
