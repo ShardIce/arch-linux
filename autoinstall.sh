@@ -38,7 +38,7 @@ EOF
 #pacman-key --populate archlinux
 
 # только для теста - стирает все разделы
-dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
+# dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
 # Разметка диска
 printf "g\nw\n" | fdisk /dev/sda # создаём gpt
