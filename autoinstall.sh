@@ -63,14 +63,14 @@ mkdir /mnt/boot /mnt/home /mnt/var
 mount /dev/sda1 /mnt/boot
 mountpoint /mnt/boot
 
-#Установка системы Arch Linux ядро + софт который нам нужен сразу
+# Установка системы Arch Linux ядро + софт который нам нужен сразу
 # pacstrap /mnt base base-devel linux linux-headers linux-firmware dhcpcd
 
 # Устанавливаем загрузчик
 # pacstrap /mnt grub-bios
 
 # Прописываем fstab
-genfstab -p /mnt >> /mnt/etc/fstab
+# genfstab -p /mnt >> /mnt/etc/fstab
 
 # Делаем скрипт пост инстала:
 cat <<EOF>>/opt/install.sh
@@ -140,9 +140,8 @@ exit
 EOF
 
 echo '14. Переход в новое окружение'
-chmod 0777 /opt/install.sh
-arch-chroot /mnt 
-bash -c /opt/install.sh
+chmod 0777 /mnt/opt/install.sh
+arch-chroot /mnt bash /opt/install.sh
 
 # Вариант 2
 # chroot /mnt/opt /bin/bash
