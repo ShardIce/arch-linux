@@ -64,10 +64,10 @@ mount /dev/sda1 /mnt/boot
 mountpoint /mnt/boot
 
 #Установка системы Arch Linux ядро + софт который нам нужен сразу
-pacstrap /mnt base base-devel linux linux-headers linux-firmware dhcpcd
+# pacstrap /mnt base base-devel linux linux-headers linux-firmware dhcpcd
 
 # Устанавливаем загрузчик
-pacstrap /mnt grub-bios
+# pacstrap /mnt grub-bios
 
 # Прописываем fstab
 genfstab -p /mnt >> /mnt/etc/fstab
