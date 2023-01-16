@@ -73,7 +73,7 @@ pacstrap /mnt grub-bios
 genfstab -p /mnt >> /mnt/etc/fstab
 
 # Делаем скрипт пост инстала:
-cat <<EOF>>/opt/install.sh
+cat <<EOF>>/mnt/opt/install.sh
 #!/bin/bash
 
 #Обновим ключики на всякий пожарный
