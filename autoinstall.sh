@@ -30,15 +30,14 @@ cat <<EOF>>/etc/pacman.d/mirrorlist
 #Server = http://archlinux.zepto.cloud/$repo/os/$arch
 Server = https://mirror.yandex.ru/archlinux/\$repo/os/\$arch
 Server = https://mirror.23media.com/archlinux/\$repo/os/\$arch
-
 EOF
-
-# Активируем новые репы
-#pacman-key --init
-#pacman-key --populate archlinux
 
 # только для теста - стирает все разделы
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
+
+# Активируем новые репы
+pacman-key --init
+pacman-key --populate archlinux
 
 # Разметка диска
 printf "g\nw\n" | fdisk /dev/sda # создаём gpt
