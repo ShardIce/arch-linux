@@ -139,7 +139,7 @@ systemctl start sddm
 exit
 EOF
 
-echo '14. Переход в новое окружение'
+echo '14. Переход в новое окружение 1111'
 chmod 0777 /mnt/opt/install.sh
 arch-chroot /mnt /usr/bin/bash /opt/install.sh
 
