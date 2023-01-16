@@ -141,7 +141,7 @@ EOF
 
 echo '14. Переход в новое окружение'
 chmod 0777 /mnt/opt/install.sh
-arch-chroot /mnt bash /opt/install.sh
+arch-chroot /mnt /usr/bin/bash /opt/install.sh
 
 # Вариант 2
 # chroot /mnt/opt /bin/bash
