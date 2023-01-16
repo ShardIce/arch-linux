@@ -112,16 +112,16 @@ sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 ######### nano /etc/sudoers.d/sudo
-printf "%wheel ALL=(ALL) ALL\n" >> /etc/sudoers.d/sudo
+printf '%wheel ALL=(ALL) ALL\n' >> /etc/sudoers.d/sudo
 
 #it's not beautiful
 #nano /etc/pacman.conf
 #printf '[multilib]' >> /etc/pacman.conf
 #printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
-sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
+#sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
 
 # Устанавливаем нужные пакеты
-pacman -Sy xorg xorg-server mate mate-extra sddm --noconfirm
+pacman -Sy xorg xorg-server mate mate-extra sddm  nano --noconfirm
 
 # Сеть
 pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet --noconfirm
