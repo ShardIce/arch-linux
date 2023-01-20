@@ -57,7 +57,7 @@ mount /dev/sda3 /mnt
 mountpoint /mnt
 
 # Cоздадим несколько папок
-mkdir /mnt/boot /mnt/home /mnt/var
+mkdir /mnt/boot /mnt/home /mnt/var /mnt/opt
 
 # Подключаем нашу загрузочную папку в загрузочный раздел "bootable"
 mount /dev/sda1 /mnt/boot
@@ -73,7 +73,7 @@ pacstrap /mnt grub-bios
 genfstab -p /mnt >> /mnt/etc/fstab
 
 # Делаем скрипт пост инстала:
-cat <<EOF>> /opt/install.sh
+cat <<EOF>> /mnt/opt/install.sh
 #!/bin/bash
 
 #Обновим ключики на всякий пожарный
