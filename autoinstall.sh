@@ -131,12 +131,6 @@ pacman -Sy xorg xorg-server mate mate-extra sddm  nano --noconfirm
 pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet --noconfirm
 pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm 
 
-# Подстрахуемся и включим повторно DHCP
-# printf "Install DHCPD"
-systemctl enable dhcpcd
-systemctl start dhcpcd
-systemctl status dhcpcd
-
 # Включаем экран логирования
 systemctl enable sddm
 systemctl start sddm
@@ -147,3 +141,9 @@ EOF
 echo '14. Переход в новое окружение 2222'
 chmod 0777 /mnt/opt/install.sh
 arch-chroot /mnt /usr/bin/bash -c /opt/install.sh
+
+# Подстрахуемся и включим повторно DHCP
+# printf "Install DHCPD"
+systemctl enable dhcpcd
+systemctl start dhcpcd
+systemctl status dhcpcd
