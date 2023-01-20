@@ -85,7 +85,6 @@ pacman -S archlinux-keyring dhcpcd --noconfirm
 mkinitcpio -p linux
 
 sleep 1
-#echo root:root | chpasswd
 printf 'root\nroot\n' | passwd
 
 useradd -mg users -G wheel -s /bin/bash shardice
@@ -104,9 +103,6 @@ locale-gen
 localectl set-locale LANG="ru_RU.UTF-8"
 localectl set-locale LANG="en_US.UTF-8"
 
-#printf "en_US.UTF-8 UTF-8\n" >> /etc/locale.gen
-#printf "ru_RU.UTF-8 UTF-8\n" >> /etc/locale.gen
-
 echo  "KEYMAP=ru\n" >> /etc/vconsole.conf
 echo  "FONT=cyr-sun16\n" >> /etc/vconsole.conf
 echo  "LANG="ru_RU.UTF-8\n" > /etc/locale.conf 
@@ -115,8 +111,8 @@ sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 nano /etc/sudoers.d/sudo
-#echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
-printf '%wheel ALL=(ALL) NOPASSWD: ALL\n' > /etc/sudoers.d/sudo
+printf "%%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
+
 
 #it's not beautiful
 #nano /etc/pacman.conf
