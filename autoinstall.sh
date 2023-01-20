@@ -103,9 +103,9 @@ locale-gen
 localectl set-locale LANG="ru_RU.UTF-8"
 localectl set-locale LANG="en_US.UTF-8"
 
-echo  "KEYMAP=ru\n" >> /etc/vconsole.conf
-echo  "FONT=cyr-sun16\n" >> /etc/vconsole.conf
-echo  "LANG="ru_RU.UTF-8\n" > /etc/locale.conf 
+printf "KEYMAP=ru\n" >> /etc/vconsole.conf
+printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
+printf "LANG="ru_RU.UTF-8\n" > /etc/locale.conf 
 
 sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
