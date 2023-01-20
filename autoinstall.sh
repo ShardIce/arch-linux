@@ -96,7 +96,7 @@ grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 sleep 1
-printf "Hostname"
+echo  "Hostname"
 hostnamectl set-hostname ArchPC
 
 echo "Обновим текущую локаль системы"
@@ -107,9 +107,9 @@ localectl set-locale LANG="en_US.UTF-8"
 #printf "en_US.UTF-8 UTF-8\n" >> /etc/locale.gen
 #printf "ru_RU.UTF-8 UTF-8\n" >> /etc/locale.gen
 
-printf "KEYMAP=ru\n" >> /etc/vconsole.conf
-printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
-printf "LANG="ru_RU.UTF-8\n" > /etc/locale.conf 
+echo  "KEYMAP=ru\n" >> /etc/vconsole.conf
+echo  "FONT=cyr-sun16\n" >> /etc/vconsole.conf
+echo  "LANG="ru_RU.UTF-8\n" > /etc/locale.conf 
 
 sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
