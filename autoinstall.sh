@@ -35,53 +35,53 @@ EOF
 # только для теста - стирает все разделы
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
-# Активируем новые репы
+echo "Активируем новые репы"
 pacman-key --init
 pacman-key --populate archlinux
 
-# Разметка диска
+echo "Разметка диска"
 printf "g\nw\n" | fdisk /dev/sda # создаём gpt
 printf "n\n1\n\n+1G\nt\n4\nw\n" | fdisk /dev/sda # первый раздел 1Гб
 printf "n\n2\n\n+10G\nt\n2\n19\nw\n" | fdisk /dev/sda # второй раздел 10Гб
 printf "n\n3\n\n\nw\n" | fdisk /dev/sda # третий раздел - остаток
  
-# Форматируем в ext 4 наш диск
+echo "Форматируем в ext 4 наш диск"
 mkfs.ext4 /dev/sda1
 mkswap /dev/sda2
 swapon /dev/sda2
 mkfs.ext4 /dev/sda3
 
-# Монтируем диск к папке
+echo "Монтируем диск к папке"
 mount /dev/sda3 /mnt
 mountpoint /mnt
 
-# Cоздадим несколько папок
+echo "Cоздадим несколько папок"
 mkdir /mnt/boot /mnt/home /mnt/var /mnt/opt
 
-# Подключаем нашу загрузочную папку в загрузочный раздел "bootable"
+echo "Подключаем нашу загрузочную папку в загрузочный раздел 'bootable'"
 mount /dev/sda1 /mnt/boot
 mountpoint /mnt/boot
 
-# Установка системы Arch Linux ядро + софт который нам нужен сразу
+echo "Установка системы Arch Linux ядро + софт который нам нужен сразу"
 pacstrap -K /mnt base linux linux-firmware linux-headers base-devel
 
-# Устанавливаем загрузчик
+echo "Устанавливаем загрузчик"
 pacstrap /mnt grub-bios
 
-# Прописываем fstab
+echo "Прописываем fstab"
 genfstab -p /mnt >> /mnt/etc/fstab
 
-# Делаем скрипт пост инстала:
+echo "Делаем скрипт пост инстала:"
 cat <<EOF>> /mnt/opt/install.sh
 #!/bin/bash
 
-# Обновление репозиториев
+echo "Обновление репозиториев"
 pacman -Sy
 
-#Обновим ключики на всякий пожарный
+echo "Обновим ключики на всякий пожарный"
 pacman -S archlinux-keyring dhcpcd --noconfirm
 
-# Создаем файл о нашем железе
+echo "Создаем файл о нашем железе"
 mkinitcpio -p linux
 
 sleep 1
@@ -90,7 +90,7 @@ printf 'root\nroot\n' | passwd
 useradd -mg users -G wheel -s /bin/bash shardice
 printf '1002\n1002\n' | passwd shardice
 
-#it's not beautiful
+echo "it's not beautiful"
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -120,14 +120,14 @@ printf "%%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
 #printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 #sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
 
-# Устанавливаем нужные пакеты
+echo "Устанавливаем нужные пакеты"
 pacman -Sy xorg xorg-server mate mate-extra sddm  nano --noconfirm
 
-# Сеть
+echo "Сеть"
 pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet --noconfirm
 pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm 
 
-# Включаем экран логирования
+echo "Включаем экран логирования"
 systemctl enable sddm
 systemctl start sddm
 
@@ -138,8 +138,7 @@ echo '14. Переход в новое окружение 2222'
 chmod 0777 /mnt/opt/install.sh
 arch-chroot /mnt /usr/bin/bash -c /opt/install.sh
 
-# Подстрахуемся и включим повторно DHCP
-# printf "Install DHCPD"
+echo "Подстрахуемся и включим повторно DHCP"
 systemctl enable dhcpcd
 systemctl start dhcpcd
 systemctl status dhcpcd
