@@ -63,7 +63,7 @@ mount /dev/sda1 /mnt/boot
 mountpoint /mnt/boot
 
 # Установка системы Arch Linux ядро + софт который нам нужен сразу
-pacstrap /mnt base base-devel linux linux-headers linux-firmware
+pacstrap -K /mnt base linux linux-firmware linux-headers base-devel
 
 # Устанавливаем загрузчик
 pacstrap /mnt grub-bios
