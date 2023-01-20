@@ -41,9 +41,9 @@ pacman-key --populate archlinux
 
 echo "Разметка диска"
 printf "g\nw\n" | fdisk /dev/sda # создаём gpt
-printf "n\n1\n\n+1G\nt\n4\nw\n" | fdisk /dev/sda # первый раздел 1Гб
-printf "n\n2\n\n+10G\nt\n2\n19\nw\n" | fdisk /dev/sda # второй раздел 10Гб
-printf "n\n3\n\n\nw\n" | fdisk /dev/sda # третий раздел - остаток
+printf "n\n1\n\n+1G\nt\n4\nw\n" | fdisk -L /dev/sda # первый раздел 1Гб
+printf "n\n2\n\n+10G\nt\n2\n19\nw\n" | fdisk -L /dev/sda # второй раздел 10Гб
+printf "n\n3\n\n\nw\n" | fdisk -L /dev/sda # третий раздел - остаток
  
 echo "Форматируем в ext 4 наш диск"
 mkfs.ext4 /dev/sda1
