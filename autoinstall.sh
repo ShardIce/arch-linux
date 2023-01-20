@@ -100,9 +100,9 @@ printf "Hostname"
 hostnamectl set-hostname ArchPC
 printf "en_US.UTF-8 UTF-8\n" >> /etc/locale.gen
 printf "ru_RU.UTF-8 UTF-8\n" >> /etc/locale.gen
-printf "KEYMAP=ru" >> /etc/vconsole.conf
-printf "FONT=cyr-sun16" >> /etc/vconsole.conf
-printf "LANG="ru_RU.UTF-8" > /etc/locale.conf 
+printf "KEYMAP=ru\n" >> /etc/vconsole.conf
+printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
+printf "LANG="ru_RU.UTF-8\n" > /etc/locale.conf 
 
 echo "Обновим текущую локаль системы"
 locale-gen
