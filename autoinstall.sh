@@ -35,8 +35,10 @@ EOF
 # только для теста - стирает все разделы
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
+# Обновление репозиториев
+pacman -Sy
+
 # Активируем новые репы
-pacman -S archlinux-keyring --noconfirm
 pacman-key --init
 pacman-key --populate archlinux
 
@@ -79,9 +81,6 @@ cat <<EOF>> /mnt/opt/install.sh
 #Обновим ключики на всякий пожарный
 pacman -S archlinux-keyring dhcpcd --noconfirm
 
-# Обновление репозиториев
-pacman -Sy
-
 # Создаем файл о нашем железе
 mkinitcpio -p linux
 
@@ -99,13 +98,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 sleep 1
 printf "Hostname"
 hostnamectl set-hostname ArchPC
-printf 'ru_RU.UTF-8 UTF-8' >> /etc/locale.gen
-printf 'KEYMAP=ru' >> /etc/vconsole.conf
-printf 'FONT=cyr-sun16' >> /etc/vconsole.conf
-printf 'LANG="ru_RU.UTF-8' > /etc/locale.conf 
-printf 'en_US.UTF-8 UTF-8' > /etc/locale.gen
+printf "en_US.UTF-8 UTF-8\n" > /etc/locale.gen
+printf "ru_RU.UTF-8 UTF-8\n" > /etc/locale.gen
+printf "KEYMAP=ru" >> /etc/vconsole.conf
+printf "FONT=cyr-sun16" >> /etc/vconsole.conf
+printf "LANG="ru_RU.UTF-8" > /etc/locale.conf 
 
-echo 'Обновим текущую локаль системы'
+echo "Обновим текущую локаль системы"
 locale-gen
 localectl set-locale LANG="ru_RU.UTF-8"
 
