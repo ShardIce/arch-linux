@@ -98,8 +98,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 sleep 1
 printf "Hostname"
 hostnamectl set-hostname ArchPC
-printf "en_US.UTF-8 UTF-8\n" > /etc/locale.gen
-printf "ru_RU.UTF-8 UTF-8\n" > /etc/locale.gen
+printf "en_US.UTF-8 UTF-8\n" >> /etc/locale.gen
+printf "ru_RU.UTF-8 UTF-8\n" >> /etc/locale.gen
 printf "KEYMAP=ru" >> /etc/vconsole.conf
 printf "FONT=cyr-sun16" >> /etc/vconsole.conf
 printf "LANG="ru_RU.UTF-8" > /etc/locale.conf 
@@ -112,7 +112,7 @@ sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 ######### nano /etc/sudoers.d/sudo
-printf "%wheel ALL=(ALL) ALL\n" > /etc/sudoers.d/sudo
+printf "%wheel ALL=(ALL) ALL\n" >> /etc/sudoers.d/sudo
 
 #it's not beautiful
 #nano /etc/pacman.conf
