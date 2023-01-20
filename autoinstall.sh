@@ -87,10 +87,10 @@ mkinitcpio -p linux
 
 sleep 1
 #echo root:root | chpasswd
-printf "root\nroot\n" | passwd
+printf 'root\nroot\n' | passwd
 
 useradd -mg users -G wheel -s /bin/bash shardice
-printf "1002\n1002\n" | passwd shardice
+printf '1002\n1002\n' | passwd shardice
 
 #it's not beautiful
 grub-install /dev/sda
