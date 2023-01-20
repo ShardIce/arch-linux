@@ -35,9 +35,6 @@ EOF
 # только для теста - стирает все разделы
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
-# Обновление репозиториев
-pacman -Sy
-
 # Активируем новые репы
 pacman-key --init
 pacman-key --populate archlinux
@@ -77,6 +74,9 @@ genfstab -p /mnt >> /mnt/etc/fstab
 # Делаем скрипт пост инстала:
 cat <<EOF>> /mnt/opt/install.sh
 #!/bin/bash
+
+# Обновление репозиториев
+pacman -Sy
 
 #Обновим ключики на всякий пожарный
 pacman -S archlinux-keyring dhcpcd --noconfirm
