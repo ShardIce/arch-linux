@@ -71,15 +71,6 @@ genfstab -p /mnt >> /mnt/etc/fstab
 echo "Устанавливаем дополнительные пакеты"
 pacman -Sy dhcpcd xorg xorg-server mate mate-extra sddm chromium sudo git htop fuse nano --noconfirm 
 
-#echo "Добавим SUDO"
-#echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
-
-#it's not beautiful
-#nano /etc/pacman.conf
-#printf '[multilib]' >> /etc/pacman.conf
-#printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
-#sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
-echo "Делаем скрипт пост инстала:"
 cat <<EOF>> /mnt/opt/install.sh
 #!/bin/bash
 
