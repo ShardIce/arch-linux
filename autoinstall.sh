@@ -110,6 +110,13 @@ printf "LANG="ru_RU.UTF-8\n" > /etc/locale.conf
 sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
+echo "Устанавливаем нужные пакеты"
+pacman -Sy xorg xorg-server mate mate-extra sddm  nano --noconfirm
+
+echo "Сеть"
+pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet --noconfirm
+pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm 
+
 nano /etc/sudoers.d/sudo
 printf "%%wheel ALL=(ALL) ALL\n" > /etc/sudoers.d/sudo
 
@@ -119,13 +126,6 @@ printf "%%wheel ALL=(ALL) ALL\n" > /etc/sudoers.d/sudo
 #printf '[multilib]' >> /etc/pacman.conf
 #printf 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 #sed -i '93c[multilib]' /mnt/etc/pacman.conf ; sed -i '94cInclude = /etc/pacman.d/mirrorlist' /mnt/etc/pacman.conf
-
-echo "Устанавливаем нужные пакеты"
-pacman -Sy xorg xorg-server mate mate-extra sddm  nano --noconfirm
-
-echo "Сеть"
-pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet --noconfirm
-pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm 
 
 echo "Включаем экран логирования"
 systemctl enable sddm
