@@ -55,7 +55,7 @@ mountpoint /mnt
 echo "Cоздадим несколько папок"
 mkdir /mnt/boot /mnt/home /mnt/var /mnt/opt
 
-echo "Подключаем нашу загрузочную папку в загрузочный раздел 'bootable'"
+echo "Подключаем нашу загрузочную папку в загрузочный раздел bootable"
 mount /dev/sda1 /mnt/boot
 mountpoint /mnt/boot
 
@@ -67,6 +67,9 @@ pacstrap /mnt grub-bios
 
 echo "Прописываем fstab"
 genfstab -p /mnt >> /mnt/etc/fstab
+
+echo "Устанавливаем дополнительные пакеты"
+pacman -Sy dhcpcd chromium sudo git htop fuse --noconfirm 
 
 echo "Делаем скрипт пост инстала:"
 cat <<EOF>> /mnt/opt/install.sh
@@ -91,10 +94,6 @@ echo "it's not beautiful"
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
-sleep 1
-echo  "Hostname"
-hostnamectl set-hostname 'ArchPC'
-
 echo "Обновим текущую локаль системы"
 locale-gen
 localectl set-locale LANG="ru_RU.UTF-8"
@@ -110,13 +109,8 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 echo "Устанавливаем нужные пакеты"
 pacman -Sy xorg xorg-server mate mate-extra sddm  nano --noconfirm
 
-echo "Сеть"
-pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet --noconfirm
-pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm 
-
-echo 'Добавим SUDO'
-#nano /etc/sudoers.d/sudo
-echo "%wheel ALL=(ALL) ALL\n" > /etc/sudoers.d/sudo
+echo "Добавим SUDO"
+echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
 
 
 #it's not beautiful
@@ -132,11 +126,14 @@ systemctl start sddm
 exit
 EOF
 
-echo '14. Переход в новое окружение'
+sleep 1
+echo  "Hostname"
+hostnamectl set-hostname 'ArchPC'
+
+echo 'Переход в новое окружение'
 chmod 0777 /mnt/opt/install.sh
 arch-chroot /mnt /usr/bin/bash -c /opt/install.sh
 
 echo "Подстрахуемся и включим повторно DHCP"
 systemctl enable dhcpcd
 systemctl start dhcpcd
-systemctl status dhcpcd
