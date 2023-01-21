@@ -71,7 +71,7 @@ genfstab -p /mnt >> /mnt/etc/fstab
 echo "Устанавливаем дополнительные пакеты"
 pacman -Sy dhcpcd xorg xorg-server mate mate-extra sddm chromium sudo git htop fuse nano --noconfirm 
 
-cat <<EOF>> /mnt/opt/install.sh
+cat <<EOF>>/mnt/opt/install.sh
 #!/bin/bash
 
 echo "Обновление репозиториев"
@@ -89,7 +89,7 @@ printf 'root\nroot\n' | passwd
 useradd -mg users -G wheel -s /bin/bash shardice
 printf '1002\n1002\n' | passwd shardice
 
-echo "it's not beautiful"
+echo "it not beautiful"
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -116,7 +116,7 @@ sleep 1
 echo  "Hostname"
 hostnamectl set-hostname 'Arch'
 
-echo 'Переход в новое окружение'
+echo "Переход в новое окружение"
 chmod 0777 /mnt/opt/install.sh
 arch-chroot /mnt /usr/bin/bash -c /opt/install.sh
 
