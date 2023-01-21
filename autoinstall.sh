@@ -123,7 +123,7 @@ EOF
 
 sleep 1
 echo  "Hostname"
-hostnamectl set-hostname 'ArchPC'
+hostnamectl set-hostname 'Arch'
 
 echo 'Переход в новое окружение'
 chmod 0777 /mnt/opt/install.sh
