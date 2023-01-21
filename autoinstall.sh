@@ -111,7 +111,7 @@ sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 nano /etc/sudoers.d/sudo
-printf "%%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
+printf "%%wheel ALL=(ALL) ALL\n" > /etc/sudoers.d/sudo
 
 
 #it's not beautiful
