@@ -93,7 +93,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 sleep 1
 echo  "Hostname"
-hostnamectl set-hostname ArchPC
+hostnamectl set-hostname 'ArchPC'
 
 echo "Обновим текущую локаль системы"
 locale-gen
@@ -116,7 +116,7 @@ pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfir
 
 echo 'Добавим SUDO'
 #nano /etc/sudoers.d/sudo
-printf "%%wheel ALL=(ALL) ALL\n" > /etc/sudoers.d/sudo
+echo "%wheel ALL=(ALL) ALL\n" > /etc/sudoers.d/sudo
 
 
 #it's not beautiful
