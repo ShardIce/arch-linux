@@ -109,8 +109,8 @@ ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 echo "Устанавливаем нужные пакеты"
 pacman -Sy xorg xorg-server mate mate-extra sddm  nano --noconfirm
 
-echo "Добавим SUDO"
-echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
+#echo "Добавим SUDO"
+#echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
 
 
 #it's not beautiful
