@@ -118,7 +118,8 @@ echo "Сеть"
 pacman -Sy dhcpcd networkmanager networkmanager-openvpn network-manager-applet --noconfirm
 pacman -Sy ppp chromium neofetch filezilla sudo git htop blueman fuse --noconfirm 
 
-nano /etc/sudoers.d/sudo
+echo 'Добавим SUDO'
+#nano /etc/sudoers.d/sudo
 printf "%%wheel ALL=(ALL) ALL\n" > /etc/sudoers.d/sudo
 
 
