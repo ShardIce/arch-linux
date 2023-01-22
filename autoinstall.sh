@@ -51,8 +51,8 @@ echo "Монтируем диск к папке"
 mount /dev/sda3 /mnt
 mountpoint /mnt
 
-echo "Cоздадим несколько папок"
-mkdir /mnt/boot /mnt/home /mnt/var
+#echo "Cоздадим несколько папок"
+#mkdir /mnt/boot /mnt/home /mnt/var
 
 echo "Подключаем нашу загрузочную папку в загрузочный раздел bootable"
 mount /dev/sda1 /mnt/boot
