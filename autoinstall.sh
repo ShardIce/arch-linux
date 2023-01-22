@@ -67,7 +67,7 @@ pacstrap /mnt grub-bios
 echo "Прописываем fstab"
 genfstab -p /mnt >> /mnt/etc/fstab
 
-cat <<EOF>>/var/tmp/install.sh
+cat <<EOF>>/mnt/var/tmp/install.sh
 #!/bin/bash
 
 echo "Обновление репозиториев"
@@ -111,7 +111,7 @@ systemctl enable sddm
 exit
 EOF
 
-cat <<NCR>>/var/tmp/install2.sh
+cat <<NCR>>/mnt/var/tmp/install2.sh
 #!/bin/bash
 
 echo  "Hostname"
@@ -123,4 +123,4 @@ systemctl start dhcpcd
 NCR
 
 echo "Переход в новое окружение"
-arch-chroot /mnt /usr/bin/bash -c /var/tmp/install.sh
+arch-chroot /mnt /usr/bin/bash -c /mnt/var/tmp/install.sh
