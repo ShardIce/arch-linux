@@ -8,8 +8,7 @@ set -x
 
 # Ставим быстрые репы
 
-> /etc/pacman.d/mirrorlist
-cat <<EOF>>/etc/pacman.d/mirrorlist
+cat <<AML>>/etc/pacman.d/mirrorlist
 
 ##
 ## Arch Linux repository mirrorlist
@@ -30,7 +29,7 @@ Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch
 Server = http://archlinux.zepto.cloud/\$repo/os/\$arch
 Server = https://mirror.yandex.ru/archlinux/\$repo/os/\$arch
 Server = https://mirror.23media.com/archlinux/\$repo/os/\$arch
-EOF
+AML
 
 # только для теста - стирает все разделы
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
@@ -40,7 +39,7 @@ pacman-key --init
 pacman-key --populate archlinux
 
 echo "Разметка диска"
-echo -e 'size=1G  bootable, type=L\n size=10G, type=S\n size=+\n' | sfdisk /dev/sda
+printf 'size=1G  bootable, type=L\n size=10G, type=S\n size=+\n' | sfdisk /dev/sda
  
 echo "Форматируем в ext 4 наш диск"
 mkfs.ext4 /dev/sda1
@@ -83,7 +82,6 @@ pacman -S archlinux-keyring dhcpcd --noconfirm
 echo "Создаем файл о нашем железе"
 mkinitcpio -p linux
 
-sleep 1
 printf 'root\nroot\n' | passwd
 
 useradd -mg users -G wheel -s /bin/bash shardice
@@ -103,26 +101,27 @@ localectl set-locale LANG="en_US.UTF-8"
 
 printf "KEYMAP=ru\n" >> /etc/vconsole.conf
 printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
-printf "LANG="ru_RU.UTF-8\n" > /etc/locale.conf 
+printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf 
 
-sleep 1
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo "Включаем экран логирования"
 systemctl enable sddm
-systemctl start sddm
 
 exit
 EOF
 
-sleep 1
-echo  "Hostname"
-hostnamectl set-hostname 'Arch'
+cat <<NCR>>/mnt/opt/install.sh
+#!/bin/bash
 
-echo "Переход в новое окружение"
-chmod 0777 /mnt/opt/install.sh
-arch-chroot /mnt /usr/bin/bash -c /opt/install.sh
+echo  "Hostname"
+hostnamectl set-hostname Arch
 
 echo "Подстрахуемся и включим повторно DHCP"
 systemctl enable dhcpcd
 systemctl start dhcpcd
+NCR
+
+echo "Переход в новое окружение"
+chmod 0777 /mnt/opt/install.sh
+arch-chroot /mnt /usr/bin/bash -c /opt/install.sh
