@@ -123,4 +123,4 @@ systemctl start dhcpcd
 NCR
 
 echo "Переход в новое окружение"
-arch-chroot /mnt /usr/bin/bash -c /mnt/var/tmp/install.sh
+arch-chroot /mnt /usr/bin/bash -c /var/tmp/install.sh
