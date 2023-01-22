@@ -67,17 +67,17 @@ pacstrap /mnt grub-bios
 echo "Прописываем fstab"
 genfstab -p /mnt >> /mnt/etc/fstab
 
-echo "Устанавливаем дополнительные пакеты"
-pacman -Sy dhcpcd xorg xorg-server mate mate-extra sddm chromium sudo git htop fuse nano --noconfirm 
-
 cat <<EOF>>/mnt/opt/install.sh
 #!/bin/bash
 
 echo "Обновление репозиториев"
 pacman -Sy
 
-echo "Обновим ключики на всякий пожарный"
-pacman -S archlinux-keyring dhcpcd --noconfirm
+echo "Обновим ключики на всякий пожарный и установим важные пакеты"
+pacman -Sу archlinux-keyring dhcpcd xorg xorg-server mate mate-extra sddm --noconfirm
+
+echo "Устанавливаем дополнительные пакеты"
+pacman -Sy chromium sudo git htop fuse nano --noconfirm 
 
 echo "Создаем файл о нашем железе"
 mkinitcpio -p linux
@@ -111,7 +111,7 @@ systemctl enable sddm
 exit
 EOF
 
-cat <<NCR>>/mnt/opt/install.sh
+cat <<NCR>>/mnt/opt/install2.sh
 #!/bin/bash
 
 echo  "Hostname"
