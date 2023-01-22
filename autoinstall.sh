@@ -93,6 +93,9 @@ echo "it not beautiful"
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
+echo "Добавим SUDO"
+echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
+
 echo "Обновим текущую локаль системы"
 locale-gen
 localectl set-locale LANG="ru_RU.UTF-8"
