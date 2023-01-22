@@ -52,7 +52,7 @@ mount /dev/sda3 /mnt
 mountpoint /mnt
 
 echo "Cоздадим несколько папок"
-mkdir /mnt/boot /mnt/home /mnt/var /mnt/opt
+mkdir /mnt/boot /mnt/home /mnt/var
 
 echo "Подключаем нашу загрузочную папку в загрузочный раздел bootable"
 mount /dev/sda1 /mnt/boot
@@ -67,7 +67,7 @@ pacstrap /mnt grub-bios
 echo "Прописываем fstab"
 genfstab -p /mnt >> /mnt/etc/fstab
 
-cat <<EOF>>/mnt/opt/install.sh
+cat <<EOF>>/mnt/tmp/install.sh
 #!/bin/bash
 
 echo "Обновление репозиториев"
@@ -111,7 +111,7 @@ systemctl enable sddm
 exit
 EOF
 
-cat <<NCR>>/mnt/opt/install2.sh
+cat <<NCR>>/mnt/tmp/install2.sh
 #!/bin/bash
 
 echo  "Hostname"
@@ -123,5 +123,5 @@ systemctl start dhcpcd
 NCR
 
 echo "Переход в новое окружение"
-chmod 0777 /mnt/opt/install.sh
-arch-chroot /mnt /usr/bin/bash -c /opt/install.sh
+chmod 0777 /mnt/tmp/install.sh
+arch-chroot /mnt /usr/bin/bash -c /tmp/install.sh
