@@ -94,16 +94,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo "Добавим SUDO"
 echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
 
-echo "Обновим текущую локаль системы"
-locale-gen
-localectl set-locale LANG="ru_RU.UTF-8"
-localectl set-locale LANG="en_US.UTF-8"
 
-printf "KEYMAP=ru\n" >> /etc/vconsole.conf
-printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
-printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf 
-
-ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo "Включаем экран логирования"
 systemctl enable sddm
@@ -120,6 +111,17 @@ hostnamectl set-hostname Arch
 echo "Подстрахуемся и включим повторно DHCP"
 systemctl enable dhcpcd
 systemctl start dhcpcd
+
+echo "Обновим текущую локаль системы"
+locale-gen
+localectl set-locale LANG="ru_RU.UTF-8"
+localectl set-locale LANG="en_US.UTF-8"
+
+printf "KEYMAP=ru\n" >> /etc/vconsole.conf
+printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
+printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf 
+
+ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 NCR
 
 echo "Переход в новое окружение"
