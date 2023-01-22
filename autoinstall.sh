@@ -94,8 +94,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo "Добавим SUDO"
 echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
 
-
-
 echo "Включаем экран логирования"
 systemctl enable sddm
 
