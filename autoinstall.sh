@@ -74,7 +74,7 @@ echo "Обновление репозиториев"
 pacman -Sy
 
 echo "Обновим ключики на всякий пожарный и установим важные пакеты"
-pacman -S archlinux-keyring dhcpcd xorg xorg-server mate mate-extra sddm --noconfirm
+pacman -S archlinux-keyring dhcpcd xorg xorg-server mate mate-extra sddm ssh--noconfirm
 
 echo "Создаем файл о нашем железе"
 mkinitcpio -p linux
