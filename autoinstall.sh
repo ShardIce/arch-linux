@@ -136,7 +136,7 @@ Description=Additional Settings
 After=systemd-user-sessions.service
 
 [Service]
-ExecStop=/bin/bash '/var/tmp/additional_settings.sh'
+ExecStart=/bin/bash '/var/tmp/additional_settings.sh'
 Type=oneshot
 RemainAfterExit=yes
 
@@ -159,7 +159,7 @@ Description=Additional software
 After=systemd-user-sessions.service
 
 [Service]
-ExecStop=/bin/bash '/var/tmp/additional_software.sh'
+ExecStart=/bin/bash '/var/tmp/additional_software.sh'
 Type=oneshot
 RemainAfterExit=yes
 
