@@ -1,9 +1,9 @@
-#!/bin/bash 
+#!/bin/bash
 
 set -x
 
 #/dev/sda1 - /boot
-#/dev/sda2 - swap 
+#/dev/sda2 - swap
 #/dev/sda3 - /
 
 # Ставим быстрые репы
@@ -40,7 +40,7 @@ pacman-key --populate archlinux
 
 echo "Разметка диска"
 printf 'size=1G  bootable, type=L\n size=10G, type=S\n size=+\n' | sfdisk /dev/sda
- 
+
 echo "Форматируем в ext 4 наш диск"
 mkfs.ext4 /dev/sda1
 mkswap /dev/sda2
@@ -94,11 +94,14 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/sudo
 echo "Включаем экран логирования"
 systemctl enable sddm
 
+echo "Запускаем BASH Additional Settings"
+systemctl enable additional_settings
+
 exit
 EOF
 
 echo "Создаём файл Additional Settings"
-cat <<ADS>>/mnt/var/tmp/additional_settings.sh
+cat <<ADST>>/mnt/var/tmp/additional_settings.sh
 #!/bin/bash
 
 echo  "Hostname"
@@ -115,25 +118,40 @@ localectl set-locale LANG="en_US.UTF-8"
 
 printf "KEYMAP=ru\n" >> /etc/vconsole.conf
 printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
-printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf 
+printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 sudo chmod +x /var/tmp/additional_software.sh
-ADS
+ADST
+
+echo "Создаём файл Unit install additional_settings.sh"
+cat <<UADS>>/mnt/etc/systemd/system/additional_settings.service
+[Unit]
+Description=PostIstall
+After=systemd-user-sessions.service
+
+[Service]
+ExecStop=/bin/bash '/var/tmp/additional_settings.sh'
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target reboot.target poweroff.target
+UADS
 
 echo "Создаём файл Additional software"
-cat <<ADS>>/mnt/var/tmp/additional_software.sh
+cat <<ADSF>>/mnt/var/tmp/additional_software.sh
 #!/bin/bash
 
 echo "Устанавливаем дополнительные пакеты"
-pacman -S chromium sudo git htop fuse nano --noconfirm 
-ADS
+pacman -S chromium sudo git htop fuse nano --noconfirm
+ADSF
 
-echo "Создаём файл Unit install ADS"
-cat <<UADS>>/etc/systemd/system/additional_software.service
+echo "Создаём файл Unit install additional_software.sh"
+cat <<UADST>>/mnt/etc/systemd/system/additional_software.service
 [Unit]
-Description=PostIstall
+Description=Additional settings
 After=systemd-user-sessions.service
 
 [Service]
@@ -143,8 +161,10 @@ RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target reboot.target poweroff.target
-UADS
+UADST
 
 echo "Переход в новое окружение"
 chmod +x /mnt/var/tmp/install.sh
 arch-chroot /mnt /var/tmp/install.sh
+
+reboot
