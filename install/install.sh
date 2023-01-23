@@ -8,6 +8,8 @@ curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/set
 echo "Подтянули настройки для $USERNAME"
 
 # Servers
+# Указываем названия серверов
+for var in "$SERVER"
 do
 echo -e "\e[1;37;1;42m Заходим на сервер $var \e[0m"
 git clone https://$var/archlinux/\$repo/os/\$arch
