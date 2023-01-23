@@ -1,4 +1,5 @@
 #!/bin/bash
+$USERNAME=shardice
 
 set -x
 
@@ -81,16 +82,16 @@ mkinitcpio -p linux
 
 printf 'root\nroot\n' | passwd
 
-useradd -mg users -G wheel -s /bin/bash shardice
-printf '1002\n1002\n' | passwd shardice
+useradd -mg users -G wheel -s /bin/bash $USERNAME
+printf '1002\n1002\n' | passwd $USERNAME
 
 echo "it not beautiful"
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Добавим SUDO"
-echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/shardice
-chmod 0775 /etc/sudoers.d/shardice
+printf "shardice ALL=(ALL:ALL) ALL" > /etc/sudoers.d/$USERNAME
+chmod 0775 /etc/sudoers.d/$USERNAME
 
 echo "Включаем экран логирования"
 systemctl enable sddm
