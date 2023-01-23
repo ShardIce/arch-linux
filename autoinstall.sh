@@ -94,7 +94,9 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sudo
 echo "Включаем экран логирования"
 systemctl enable sddm
 
+
 echo "Запускаем BASH Additional Settings"
+sudo chmod +x /var/tmp/additional_settings.sh
 systemctl enable additional_settings
 
 exit
@@ -128,7 +130,7 @@ ADST
 echo "Создаём файл Unit install additional_settings.sh"
 cat <<UADS>>/mnt/etc/systemd/system/additional_settings.service
 [Unit]
-Description=PostIstall
+Description=Additional Settings
 After=systemd-user-sessions.service
 
 [Service]
@@ -151,7 +153,7 @@ ADSF
 echo "Создаём файл Unit install additional_software.sh"
 cat <<UADST>>/mnt/etc/systemd/system/additional_software.service
 [Unit]
-Description=Additional settings
+Description=Additional software
 After=systemd-user-sessions.service
 
 [Service]
