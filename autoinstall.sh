@@ -1,5 +1,5 @@
 #!/bin/bash
-$USERNAME=shardice
+$USERNAME="shardice"
 
 set -x
 
@@ -35,10 +35,9 @@ AML
 # только для теста - стирает все разделы
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
-echo "Активируем новые репы"
-pacman -Sy --noconfirm
-pacman-key --init
-pacman-key --populate archlinux
+#echo "Активируем новые репы"
+#pacman-key --init
+#pacman-key --populate archlinux
 
 echo "Разметка диска"
 printf 'size=1G  bootable, type=L\n size=10G, type=S\n size=+\n' | sfdisk /dev/sda
