@@ -76,9 +76,6 @@ pacman -Sy
 echo "Обновим ключики на всякий пожарный и установим важные пакеты"
 pacman -S archlinux-keyring dhcpcd xorg xorg-server mate mate-extra sddm --noconfirm
 
-echo "Устанавливаем дополнительные пакеты"
-pacman -S chromium sudo git htop fuse nano --noconfirm 
-
 echo "Создаем файл о нашем железе"
 mkinitcpio -p linux
 
@@ -100,7 +97,8 @@ systemctl enable sddm
 exit
 EOF
 
-cat <<NCR>>/mnt/var/tmp/install2.sh
+echo "Создаём файл Additional Settings"
+cat <<ADS>>/mnt/var/tmp/additional_settings.sh
 #!/bin/bash
 
 echo  "Hostname"
@@ -120,7 +118,32 @@ printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
 printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf 
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
-NCR
+
+sudo chmod +x /var/tmp/additional_software.sh
+ADS
+
+echo "Создаём файл Additional software"
+cat <<ADS>>/mnt/var/tmp/additional_software.sh
+#!/bin/bash
+
+echo "Устанавливаем дополнительные пакеты"
+pacman -S chromium sudo git htop fuse nano --noconfirm 
+ADS
+
+echo "Создаём файл Unit install ADS"
+cat <<UADS>>/etc/systemd/system/additional_software.service
+[Unit]
+Description=PostIstall
+After=systemd-user-sessions.service
+
+[Service]
+ExecStop=/bin/bash '/var/tmp/additional_software.sh'
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target reboot.target poweroff.target
+UADS
 
 echo "Переход в новое окружение"
 chmod +x /mnt/var/tmp/install.sh
