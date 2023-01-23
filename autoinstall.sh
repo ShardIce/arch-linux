@@ -1,5 +1,6 @@
 #!/bin/bash
-$USERNAME="shardice"
+USERNAME="shardice"
+echo "Пользователь будет $USERNAME"
 
 set -x
 
@@ -90,7 +91,7 @@ grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Добавим SUDO"
-printf "shardice ALL=(ALL:ALL) ALL" > /etc/sudoers.d/$USERNAME
+printf "$USERNAME ALL=(ALL:ALL) ALL" > /etc/sudoers.d/$USERNAME
 chmod 0775 /etc/sudoers.d/$USERNAME
 
 echo "Включаем экран логирования"
