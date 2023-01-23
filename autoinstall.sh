@@ -36,6 +36,7 @@ AML
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
 
 echo "Активируем новые репы"
+pacman -Sy --noconfirm
 pacman-key --init
 pacman-key --populate archlinux
 
