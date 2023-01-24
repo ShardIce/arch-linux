@@ -3,6 +3,6 @@
 USERNAME=shardice
 
 # Актуальне зеркала
-COUNTRY=RU
+COUNTRY=US
 IP_VERSION=4
 PROTOCOL=https
