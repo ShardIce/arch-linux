@@ -12,7 +12,7 @@ echo "Ваша версия IP протокола: " $IP_VERSION
 read -p "Введите протокол (http) или (https): " PROTOCOL
 echo "Ваша версия протокола:" $PROTOCOL
 
-cat <<SET>>setting2
+cat <<SET>>setting
 #!/bin/bash
 
 USERNAME=$USERNAME
