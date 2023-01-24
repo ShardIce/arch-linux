@@ -104,6 +104,9 @@ echo "Запускаем BASH Additional Software"
 sudo chmod +x /var/tmp/additional_software.sh
 systemctl enable additional_software
 
+echo "Запускаем SSH"
+systemctl enable sshd
+
 exit
 EOF
 
