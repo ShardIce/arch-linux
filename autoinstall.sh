@@ -100,6 +100,10 @@ echo "Запускаем BASH Additional Settings"
 sudo chmod +x /var/tmp/additional_settings.sh
 systemctl enable additional_settings
 
+echo "Запускаем BASH Additional Software"
+sudo chmod +x /var/tmp/additional_software.sh
+systemctl enable additional_software
+
 exit
 EOF
 
@@ -124,9 +128,6 @@ printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
 printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
-
-sudo chmod +x /var/tmp/additional_software.sh
-systemctl enable additional_software
 ADST
 
 echo "Создаём файл Unit install additional_settings.sh"
