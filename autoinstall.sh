@@ -1,5 +1,11 @@
 #!/bin/bash
 USERNAME="shardice"
+
+# Актуальне зеркала
+COUNTRY=US
+IP_VERSION=4
+PROTOCOL=https
+
 echo "Пользователь будет $USERNAME"
 
 set -x
@@ -10,28 +16,13 @@ set -x
 
 # Ставим быстрые репы
 
-cat <<AML>>/etc/pacman.d/mirrorlist
-
-##
-## Arch Linux repository mirrorlist
-## Generated on 2020-01-02
-##
-
-## Russia
-Server = http://mirror.surf/archlinux/\$repo/os/\$arch
-Server = https://mirror.surf/archlinux/\$repo/os/\$arch
-Server = http://mirror.nw-sys.ru/archlinux/\$repo/os/\$arch
-Server = https://mirror.nw-sys.ru/archlinux/\$repo/os/\$arch
-Server = http://mirrors.powernet.com.ru/archlinux/\$repo/os/\$arch
-Server = http://mirror.rol.ru/archlinux/\$repo/os/\$arch
-Server = https://mirror.rol.ru/archlinux/\$repo/os/\$arch
-Server = http://mirror.truenetwork.ru/archlinux/\$repo/os/\$arch
-Server = https://mirror.truenetwork.ru/archlinux/\$repo/os/\$arch
-Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch
-Server = http://archlinux.zepto.cloud/\$repo/os/\$arch
-Server = https://mirror.yandex.ru/archlinux/\$repo/os/\$arch
-Server = https://mirror.23media.com/archlinux/\$repo/os/\$arch
-AML
+echo -e "\e[1;37;1;42m Сохраняем актуальный mirrorlist по IPv$IP_VERSION \e[0m"
+# Servers
+# Указываем названия серверов
+sudo curl -o /etc/pacman.d/mirrorlist https://archlinux.org/mirrorlist/?country=$COUNTRY&protocol=$PROTOCOL&ip_version=$IP_VERSION
+sleep 5
+echo -e "\e[1;37;1;42m Отредактировали mirrorlist по IPv$IP_VERSION \e[0m"
+sudo sed -i -e "s/#Server\ /Server\ /g" /etc/pacman.d/mirrorlist
 
 # только для теста - стирает все разделы
 # dd if=/dev/zero of=/dev/sda bs=1G count=10 status=progress
