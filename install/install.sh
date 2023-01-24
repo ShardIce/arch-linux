@@ -8,12 +8,8 @@ chmod 0775 setings
 . settings
 echo "Подтянули настройки для $USERNAME"
 
+echo -e "\e[1;37;1;42m Сохраняем актуальный mirrorlist \e[0m"
 # Servers
 # Указываем названия серверов
-for var in "$SERVER"
-do
-echo -e "\e[1;37;1;42m Заходим на сервер $var \e[0m"
-echo "https://$var/archlinux/\$repo/os/\$arch"
-echo "Показываем на каком мы сервере $var\n1"
-echo -e "\n2"
-done
+curl -o /home/$USERNAME/Desktop/mirrorlist https://archlinux.org/mirrorlist/?country=$COUNTRY&protocol=$PROTOCOL&ip_version=$IP_VERSION
+
