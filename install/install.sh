@@ -13,7 +13,7 @@ read -e -p "Введите протокол (http) или (https): " PROTOCOL
 echo "Ваша версия протокола:" $PROTOCOL
 
 
-cat <<SET>>setting
+cat <<SET>./settings
 #!/bin/bash
 
 USERNAME=$USERNAME
