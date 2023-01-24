@@ -1,8 +1,0 @@
-#!/bin/bash
-
-USERNAME=shardice
-
-# Актуальне зеркала
-COUNTRY=US
-IP_VERSION=4
-PROTOCOL=https
