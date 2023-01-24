@@ -1,4 +1,4 @@
 #!/bin/bash
 
 USERNAME=shardice
-SERVER="mirror.surf mirror.nw-sys.ru mirrors.powernet.com.ru mirror.rol.ru mirror.truenetwork.ru mirror.yandex.ru mirror.23media.com"
+SERVER="mirror.surf" "mirror.nw-sys.ru" "mirrors.powernet.com.ru" "mirror.rol.ru" "mirror.truenetwork.ru" "mirror.yandex.ru" "mirror.23media.com"
