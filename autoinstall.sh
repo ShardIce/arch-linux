@@ -76,7 +76,7 @@ echo "Обновление репозиториев"
 pacman -Sy
 
 echo "Обновим ключики на всякий пожарный и установим важные пакеты"
-pacman -S archlinux-keyring dhcpcd xorg xorg-server mate mate-extra sddm ssh --noconfirm
+pacman -Sy archlinux-keyring dhcpcd xorg xorg-server mate mate-extra sddm ssh --noconfirm
 
 echo "Создаем файл о нашем железе"
 mkinitcpio -p linux
@@ -91,7 +91,7 @@ grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Добавим SUDO"
-printf "$USERNAME ALL=(ALL:ALL) ALL\n" > /etc/sudoers.d/$USERNAME
+printf "$USERNAME ALL=(ALL:ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/$USERNAME
 
 echo "Включаем экран логирования"
 systemctl enable sddm
