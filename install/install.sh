@@ -2,7 +2,28 @@
 
 set +x
 
-curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/settings
+echo "Вводите все ответы без скобок ()"
+read -p "Введите имя: " USERNAME
+echo "Было введено имя: " $USERNAME
+read -p "Введите локаль в формате (RU),(US): " COUNTRY
+echo "Вы выбрали страну реп: " $COUNTRY
+read -p "Введите версию IP протокола (4) или (6): " IP_VERSION
+echo "Ваша версия IP протокола: " $IP_VERSION
+read -p "Введите протокол (http) или (https): " PROTOCOL
+echo "Ваша версия протокола:" $PROTOCOL
+
+cat <<SET>>setting2
+#!/bin/bash
+
+USERNAME=$USERNAME
+
+# Актуальне зеркала
+COUNTRY=$COUNTRY
+IP_VERSION=$IP_VERSION
+PROTOCOL=$PROTOCOL
+SET
+
+#curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/settings
 
 . settings
 echo "Подтянули настройки для $USERNAME"
