@@ -19,7 +19,7 @@ do
 done
 
 echo "Введите протокол http или https:"
-
+select PROTOCOL in "http" "https"
 do
   echo "Ваша версия протокола:" $PROTOCOL
   break
