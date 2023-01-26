@@ -1,5 +1,4 @@
 #!/bin/bash
-. settings
 
 function ping_lan {
 clear
@@ -54,3 +53,6 @@ echo -en "\n\n\t\t\tНажмите любую клавишу для продол
 read -n 1 line
 done
 clear
+
+curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/install.sh
+curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/creating_settings.sh
