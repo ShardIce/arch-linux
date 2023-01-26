@@ -2,27 +2,6 @@
 
 set +x
 
-echo "Вводите все ответы без скобок ()"
-read -e -p "Введите имя: " USERNAME
-echo "Было введено имя: " $USERNAME
-read -e -p "Введите локаль в формате (RU),(US): " COUNTRY
-echo "Вы выбрали страну реп: " $COUNTRY
-read -e -p "Введите версию IP протокола (4) или (6): " IP_VERSION
-echo "Ваша версия IP протокола: " $IP_VERSION
-read -e -p "Введите протокол (http) или (https): " PROTOCOL
-echo "Ваша версия протокола:" $PROTOCOL
-
-cat <<SET>./settings
-#!/bin/bash
-
-USERNAME=$USERNAME
-
-# Актуальне зеркала
-COUNTRY=$COUNTRY
-IP_VERSION=$IP_VERSION
-PROTOCOL=$PROTOCOL
-SET
-
 . settings
 echo "Подтянули настройки для $USERNAME"
 
