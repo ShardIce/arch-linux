@@ -1,5 +1,8 @@
 #!/bin/bash
 
+curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/install.sh
+curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/creating_settings.sh
+
 function ping_lan {
 clear
 ping -c 3 8.8.8.8
@@ -53,6 +56,3 @@ echo -en "\n\n\t\t\tНажмите любую клавишу для продол
 read -n 1 line
 done
 clear
-
-curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/install.sh
-curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/creating_settings.sh
