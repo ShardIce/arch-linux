@@ -1,7 +1,7 @@
 #!/bin/bash
 
-curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/install.sh
-curl -O https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/creating_settings.sh
+curl -o /clear_install/ https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/install.sh
+curl -o /clear_install/ https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/creating_settings.sh
 
 function ping_lan {
 clear
@@ -17,7 +17,7 @@ clear
 }
 function start {
 clear
-/bin/bash creating_settings.sh
+/bin/bash /clear_install/creating_settings.sh
 }
 
 #Создаем меню
