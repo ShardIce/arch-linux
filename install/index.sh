@@ -16,6 +16,7 @@ clear
 /bin/ cat /proc/meminfo
 }
 function start {
+clear
 /bin/bash creating_settings.sh
 }
 
