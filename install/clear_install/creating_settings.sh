@@ -36,4 +36,4 @@ IP_VERSION=$IP_VERSION
 PROTOCOL=$PROTOCOL
 SET
 
-/bin/bash install.sh
+/bin/bash /var/tmp/clear_install/install.sh
