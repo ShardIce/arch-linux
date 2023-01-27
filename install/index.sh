@@ -20,6 +20,10 @@ function start {
 clear
 /bin/bash /clear_install/creating_settings.sh
 }
+function start_uefi {
+clear
+echo "раздел в раззработке"
+}
 
 #Создаем меню
 function menu {
@@ -27,9 +31,10 @@ clear
 echo
 echo -e "\t\t\tМеню скрипта\n"
 echo -e "\t1. Проверка наличия интернета"
-echo -e "\t2. Старт чистой установки"
-echo -e "\t3. Информация об интерфейсах"
-echo -e "\t4. Информация о памяти"
+echo -e "\t2. Старт чистой установки BIOS"
+echo -e "\t3. Старт чистой установки UEFI"
+echo -e "\t4. Информация об интерфейсах"
+echo -e "\t5. Информация о памяти"
 echo -e "\t0. Выход"
 echo -en "\t\tВведите номер раздела: "
 read -n 1 option
@@ -46,8 +51,10 @@ do
 2)
         start ;;
 3)
-        ifconfig ;;
+        start_uefi ;;
 4)
+        ifconfig ;;
+5)
         meminfo ;;
 
 *)
