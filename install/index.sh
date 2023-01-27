@@ -1,8 +1,8 @@
 #!/bin/bash
 
 mkdir /var/tmp/clear_install/
-curl -o /var/tmp/clear_install/install.sh https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/install.sh
-curl -o /var/tmp/clear_install/creating_settings.sh https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/creating_settings.sh
+curl -o /var/tmp/clear_install/install.sh https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/clear_install/install.sh
+curl -o /var/tmp/clear_install/creating_settings.sh https://raw.githubusercontent.com/ShardIce/arch-linux/master/install/clear_install/creating_settings.sh
 
 function ping_lan {
 clear
