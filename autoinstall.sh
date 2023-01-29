@@ -19,7 +19,7 @@ set -x
 echo -e "\e[1;37;1;42m Сохраняем актуальный mirrorlist по IPv$IP_VERSION \e[0m"
 # Servers
 # Указываем названия серверов
-curl -o /etc/pacman.d/mirrorlist https://archlinux.org/mirrorlist/?country=$COUNTRY&protocol=$PROTOCOL&ip_version=$IP_VERSION
+curl -o /etc/pacman.d/mirrorlist "https://archlinux.org/mirrorlist/?country=$COUNTRY&protocol=$PROTOCOL&ip_version=$IP_VERSION"
 sleep 5
 echo -e "\e[1;37;1;42m Отредактировали mirrorlist по IPv$IP_VERSION \e[0m"
 sed -i -e "s/#Server\ /Server\ /g" /etc/pacman.d/mirrorlist
@@ -120,6 +120,8 @@ localectl set-locale LANG="en_US.UTF-8"
 printf "KEYMAP=ru\n" >> /etc/vconsole.conf
 printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
 printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf
+
+printf "include "\/usr/share/nano/*.nanorc"\" > /etc/nanorc
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 ADST
