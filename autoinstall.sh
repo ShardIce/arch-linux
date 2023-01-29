@@ -121,7 +121,8 @@ printf "KEYMAP=ru\n" >> /etc/vconsole.conf
 printf "FONT=cyr-sun16\n" >> /etc/vconsole.conf
 printf "LANG=ru_RU.UTF-8\n" > /etc/locale.conf
 
-printf "include "\/usr/share/nano/*.nanorc"\" > /etc/nanorc
+echo "добавим подсветку синтаксиса в NANO"
+printf 'include "/usr/share/nano/*.nanorc"' > ~/.nanorc
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 ADST
