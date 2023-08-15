@@ -221,6 +221,9 @@ echo -e "\n"
 done
 AUR
 
+echo "Передам права на папку $USERNAME"
+chwon $USERNAME:wheel -R /var/tmp/AUR/
+
 echo -en "\033[37;1;41m Создаём файл Unit install для AUR.sh \033[0m\n"
 cat <<UAUR>>/mnt/etc/systemd/system/aur.service
 [Unit]
