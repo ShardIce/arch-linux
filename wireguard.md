@@ -1,10 +1,11 @@
-Если возникла ошибка Failed to set DNS configuration: Could not activate remote peer
+# Установка WireGuard
+Установка пакета WireGuard
 ```text
-sudo systemctl enable --now systemd-resolved
+# pacman -S wireguard-tools
 ```
-
-Перед включением интерфейса wg0, разрешим серверу пересылать пакеты вперед.
-Создадим и напишем в настройках sysctl /etc/sysctl.d/99-custom.conf или по адресу /etc/sysctl.conf
+      
+Перед включением интерфейса `wg0`, разрешим серверу пересылать пакеты вперед.   
+Создадим и напишем в настройках sysctl `/etc/sysctl.d/99-custom.conf` или по адресу `/etc/sysctl.conf`
 ```text
 # Включить IPv4-перенаправление
 net.ipv4.ip_forward = 1
@@ -13,3 +14,12 @@ net.ipv4.ip_forward = 1
 net.ipv6.conf.all.forwarding = 1
 ```
 > Возможно после этих настроек сервер нужно будет перезагрузить, если не будет пинговаться ip wireguard.
+
+
+
+
+Решение проблем:
+Если возникла ошибка Failed to set DNS configuration: Could not activate remote peer
+```text
+sudo systemctl enable --now systemd-resolved
+```
